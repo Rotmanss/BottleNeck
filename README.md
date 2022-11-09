@@ -1,2 +1,2 @@
 # BottleNeck
-App for processing xml data. Converting to HTML is been maintaining.
+App for processing XML data. Converting to HTML maintained.

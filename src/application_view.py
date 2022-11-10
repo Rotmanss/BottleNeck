@@ -263,56 +263,6 @@ class ApplicationView(QtWidgets.QMainWindow):
         self.evaluationsCheckButton.setText(_translate("window", "Evaluations"))
         self.rankingCheckButton.setText(_translate("window", "Ranking"))
 
-        # # combo(drop menu) boxes
-        # # surnames
-        # self.surnameBox.addItem("Pevny")
-        # self.surnameBox.addItem("Olefir")
-        # self.surnameBox.addItem("Fesiuk")
-        # self.surnameBox.addItem("Vishnyak")
-        # self.surnameBox.addItem("Algin")
-#
-        # # faculty
-        # self.facultyBox.addItem("CSC")
-        # self.facultyBox.addItem("IT")
-        # self.facultyBox.addItem("MAM")
-        # self.facultyBox.addItem("Chemistry")
-        # self.facultyBox.addItem("History")
-#
-        # # major
-        # self.majorBox.addItem("122")
-        # self.majorBox.addItem("121")
-        # self.majorBox.addItem("112")
-        # self.majorBox.addItem("027")
-        # self.majorBox.addItem("102")
-#
-        # # department
-        # self.departmentBox.addItem("OR")
-        # self.departmentBox.addItem("OOP")
-        # self.departmentBox.addItem("Mathan")
-        # self.departmentBox.addItem("UH")
-        # self.departmentBox.addItem("H2O")
-#
-        # # id
-        # self.idBox.addItem("100")
-        # self.idBox.addItem("200")
-        # self.idBox.addItem("300")
-        # self.idBox.addItem("400")
-        # self.idBox.addItem("500")
-#
-        # # ranking
-        # self.rankingBox.addItem("1")
-        # self.rankingBox.addItem("2")
-        # self.rankingBox.addItem("3")
-        # self.rankingBox.addItem("4")
-        # self.rankingBox.addItem("5")
-#
-        # # evaluations
-        # self.evaluationsBox.addItem("10")
-        # self.evaluationsBox.addItem("9")
-        # self.evaluationsBox.addItem("8")
-        # self.evaluationsBox.addItem("7")
-        # self.evaluationsBox.addItem("6")
-
         # menu bar
         self.menuFile.setTitle(_translate("window", "File"))
         self.actionOpen.setText(_translate("window", "Open"))

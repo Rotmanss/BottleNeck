@@ -1,6 +1,9 @@
 import application_view as view
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+import sax_handler as han
+import xml.sax
+
 
 class BottleNeckButtons(view.ApplicationView):
     def __init__(self):
@@ -8,8 +11,8 @@ class BottleNeckButtons(view.ApplicationView):
         self.init_ui()
         self.on_event()
 
-        self.checkBoxStatusDict = { "Surname" : False, "Faculty" : False, "Department" : False, "Major" : False, "ID" : False,
-                                   "Evaluations" : False, "Ranking" : False }
+        self.checkBoxStatusDict = {"Surname": False, "Faculty": False, "Department": False, "Major": False, "ID": False,
+                                   "Evaluations": False, "Ranking": False}
 
     def on_event(self):
         self.convertButton.clicked.connect(self.convert_button)
@@ -29,10 +32,6 @@ class BottleNeckButtons(view.ApplicationView):
         self.actionOpen.triggered.connect(self.open_data)
         self.actionSave.triggered.connect(self.save_data)
         self.actionClear.triggered.connect(self.clear_data)
-
-    # setting combo(drop menu) boxes
-    def set_boxes(self):
-        pass
 
     # buttons
     def convert_button(self):
@@ -82,7 +81,37 @@ class BottleNeckButtons(view.ApplicationView):
 
     # menu bar
     def open_data(self):
-        print('open data')
+        handler = han.SaxHandler()
+        parser = xml.sax.make_parser()
+        parser.setContentHandler(handler)
+        parser.parse(r'D:\Programs\Pycharm\PyProjects\BottleNeck\StudentSuccess.xml')
+
+        data = handler.handle()
+
+        for key in data:
+            if key == 'Surname':
+                for value in data[key]:
+                    self.surnameBox.addItem(value)
+            elif key == "Faculty":
+                for value in data[key]:
+                    self.facultyBox.addItem(value)
+            elif key == "Department":
+                for value in data[key]:
+                    self.departmentBox.addItem(value)
+            elif key == "Major":
+                for value in data[key]:
+                    self.majorBox.addItem(value)
+            elif key == "ID":
+                for value in data[key]:
+                    self.idBox.addItem(value)
+            elif key == "Evaluations":
+                for value in data[key]:
+                    self.evaluationsBox.addItem(value)
+            elif key == "Ranking":
+                for value in data[key]:
+                    self.rankingBox.addItem(value)
+
+        print(data)
 
     def save_data(self):
         print('save data')

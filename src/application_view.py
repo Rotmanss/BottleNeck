@@ -39,6 +39,7 @@ class ApplicationView(QtWidgets.QMainWindow):
         self.convertButton.setFont(font)
         self.convertButton.setStyleSheet("background-color:rgb(255, 250, 80)")
         self.convertButton.setObjectName("convertButton")
+
         self.searchButton = QtWidgets.QPushButton(self.centralwidget)
         self.searchButton.setGeometry(QtCore.QRect(260, 630, 161, 41))
         font = QtGui.QFont()
@@ -57,6 +58,8 @@ class ApplicationView(QtWidgets.QMainWindow):
         self.SaxApiButton.setFont(font)
         self.SaxApiButton.setStyleSheet("")
         self.SaxApiButton.setObjectName("SaxApiButton")
+        self.SaxApiButton.setChecked(True)
+
         self.DomApiButton = QtWidgets.QRadioButton(self.centralwidget)
         self.DomApiButton.setGeometry(QtCore.QRect(260, 530, 130, 30))
         font = QtGui.QFont()
@@ -67,6 +70,7 @@ class ApplicationView(QtWidgets.QMainWindow):
         self.DomApiButton.setObjectName("DomApiButton")
 
         # check(tick) boxes
+        # surname
         self.surnameCheckButton = QtWidgets.QCheckBox(self.centralwidget)
         self.surnameCheckButton.setGeometry(QtCore.QRect(20, 30, 111, 30))
         font = QtGui.QFont()
@@ -74,6 +78,8 @@ class ApplicationView(QtWidgets.QMainWindow):
         font.setPointSize(14)
         self.surnameCheckButton.setFont(font)
         self.surnameCheckButton.setObjectName("surnameCheckButton")
+
+        # faculty
         self.facultyCheckButton = QtWidgets.QCheckBox(self.centralwidget)
         self.facultyCheckButton.setGeometry(QtCore.QRect(20, 80, 111, 30))
         font = QtGui.QFont()
@@ -81,6 +87,8 @@ class ApplicationView(QtWidgets.QMainWindow):
         font.setPointSize(14)
         self.facultyCheckButton.setFont(font)
         self.facultyCheckButton.setObjectName("facultyCheckButton")
+
+        # department
         self.departmentCheckButton = QtWidgets.QCheckBox(self.centralwidget)
         self.departmentCheckButton.setGeometry(QtCore.QRect(20, 180, 111, 30))
         font = QtGui.QFont()
@@ -88,6 +96,8 @@ class ApplicationView(QtWidgets.QMainWindow):
         font.setPointSize(14)
         self.departmentCheckButton.setFont(font)
         self.departmentCheckButton.setObjectName("departmentCheckButton")
+
+        # major
         self.majorCheckButton = QtWidgets.QCheckBox(self.centralwidget)
         self.majorCheckButton.setGeometry(QtCore.QRect(20, 130, 111, 30))
         font = QtGui.QFont()
@@ -95,6 +105,8 @@ class ApplicationView(QtWidgets.QMainWindow):
         font.setPointSize(14)
         self.majorCheckButton.setFont(font)
         self.majorCheckButton.setObjectName("majorCheckButton")
+
+        # id
         self.idCheckButton = QtWidgets.QCheckBox(self.centralwidget)
         self.idCheckButton.setGeometry(QtCore.QRect(20, 330, 111, 30))
         font = QtGui.QFont()
@@ -102,6 +114,8 @@ class ApplicationView(QtWidgets.QMainWindow):
         font.setPointSize(14)
         self.idCheckButton.setFont(font)
         self.idCheckButton.setObjectName("idCheckButton")
+
+        # evaluations
         self.evaluationsCheckButton = QtWidgets.QCheckBox(self.centralwidget)
         self.evaluationsCheckButton.setGeometry(QtCore.QRect(20, 230, 111, 30))
         font = QtGui.QFont()
@@ -109,6 +123,8 @@ class ApplicationView(QtWidgets.QMainWindow):
         font.setPointSize(14)
         self.evaluationsCheckButton.setFont(font)
         self.evaluationsCheckButton.setObjectName("evaluationsCheckButton")
+
+        # ranking
         self.rankingCheckButton = QtWidgets.QCheckBox(self.centralwidget)
         self.rankingCheckButton.setGeometry(QtCore.QRect(20, 280, 111, 30))
         font = QtGui.QFont()
@@ -118,119 +134,83 @@ class ApplicationView(QtWidgets.QMainWindow):
         self.rankingCheckButton.setObjectName("rankingCheckButton")
 
         # combo(drop menu) boxes
-        self.comboBox = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox.setGeometry(QtCore.QRect(190, 40, 281, 30))
+        # surname
+        self.surnameBox = QtWidgets.QComboBox(self.centralwidget)
+        self.surnameBox.setGeometry(QtCore.QRect(190, 40, 281, 30))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(13)
-        self.comboBox.setFont(font)
-        self.comboBox.setEditable(False)
-        self.comboBox.setMaxVisibleItems(5)
-        self.comboBox.setMaxCount(5)
-        self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox_2 = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox_2.setGeometry(QtCore.QRect(190, 90, 281, 30))
-        font = QtGui.QFont()
-        font.setFamily("Calibri")
-        font.setPointSize(13)
-        self.comboBox_2.setFont(font)
-        self.comboBox_2.setEditable(False)
-        self.comboBox_2.setMaxVisibleItems(5)
-        self.comboBox_2.setMaxCount(5)
-        self.comboBox_2.setObjectName("comboBox_2")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_3 = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox_3.setGeometry(QtCore.QRect(190, 140, 281, 30))
-        font = QtGui.QFont()
-        font.setFamily("Calibri")
-        font.setPointSize(13)
-        self.comboBox_3.setFont(font)
-        self.comboBox_3.setEditable(False)
-        self.comboBox_3.setMaxVisibleItems(5)
-        self.comboBox_3.setMaxCount(5)
-        self.comboBox_3.setObjectName("comboBox_3")
-        self.comboBox_3.addItem("")
-        self.comboBox_3.addItem("")
-        self.comboBox_3.addItem("")
-        self.comboBox_3.addItem("")
-        self.comboBox_3.addItem("")
-        self.comboBox_4 = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox_4.setGeometry(QtCore.QRect(190, 190, 281, 30))
-        font = QtGui.QFont()
-        font.setFamily("Calibri")
-        font.setPointSize(13)
-        self.comboBox_4.setFont(font)
-        self.comboBox_4.setEditable(False)
-        self.comboBox_4.setMaxVisibleItems(5)
-        self.comboBox_4.setMaxCount(5)
-        self.comboBox_4.setObjectName("comboBox_4")
-        self.comboBox_4.addItem("")
-        self.comboBox_4.addItem("")
-        self.comboBox_4.addItem("")
-        self.comboBox_4.addItem("")
-        self.comboBox_4.addItem("")
-        self.comboBox_5 = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox_5.setGeometry(QtCore.QRect(190, 340, 281, 30))
-        font = QtGui.QFont()
-        font.setFamily("Calibri")
-        font.setPointSize(13)
-        self.comboBox_5.setFont(font)
-        self.comboBox_5.setEditable(False)
-        self.comboBox_5.setMaxVisibleItems(5)
-        self.comboBox_5.setMaxCount(5)
-        self.comboBox_5.setObjectName("comboBox_5")
-        self.comboBox_5.addItem("")
-        self.comboBox_5.addItem("")
-        self.comboBox_5.addItem("")
-        self.comboBox_5.addItem("")
-        self.comboBox_5.addItem("")
-        self.comboBox_6 = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox_6.setGeometry(QtCore.QRect(190, 290, 281, 30))
-        font = QtGui.QFont()
-        font.setFamily("Calibri")
-        font.setPointSize(13)
-        self.comboBox_6.setFont(font)
-        self.comboBox_6.setEditable(False)
-        self.comboBox_6.setMaxVisibleItems(5)
-        self.comboBox_6.setMaxCount(5)
-        self.comboBox_6.setObjectName("comboBox_6")
-        self.comboBox_6.addItem("")
-        self.comboBox_6.addItem("")
-        self.comboBox_6.addItem("")
-        self.comboBox_6.addItem("")
-        self.comboBox_6.addItem("")
-        self.comboBox_8 = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox_8.setGeometry(QtCore.QRect(190, 240, 281, 30))
-        font = QtGui.QFont()
-        font.setFamily("Calibri")
-        font.setPointSize(13)
-        self.comboBox_8.setFont(font)
-        self.comboBox_8.setEditable(False)
-        self.comboBox_8.setMaxVisibleItems(5)
-        self.comboBox_8.setMaxCount(5)
-        self.comboBox_8.setObjectName("comboBox_8")
-        self.comboBox_8.addItem("")
-        self.comboBox_8.addItem("")
-        self.comboBox_8.addItem("")
-        self.comboBox_8.addItem("")
-        self.comboBox_8.addItem("")
+        self.surnameBox.setFont(font)
+        self.surnameBox.setEditable(False)
+        self.surnameBox.setObjectName("surnameBox")
 
-        self.comboBox.setCurrentIndex(0)
-        self.comboBox_2.setCurrentIndex(0)
-        self.comboBox_3.setCurrentIndex(0)
-        self.comboBox_4.setCurrentIndex(0)
-        self.comboBox_5.setCurrentIndex(0)
-        self.comboBox_6.setCurrentIndex(0)
-        self.comboBox_8.setCurrentIndex(0)
+        # faculty
+        self.facultyBox = QtWidgets.QComboBox(self.centralwidget)
+        self.facultyBox.setGeometry(QtCore.QRect(190, 90, 281, 30))
+        font = QtGui.QFont()
+        font.setFamily("Calibri")
+        font.setPointSize(13)
+        self.facultyBox.setFont(font)
+        self.facultyBox.setEditable(False)
+        self.facultyBox.setObjectName("facultyBox")
+
+        # major
+        self.majorBox = QtWidgets.QComboBox(self.centralwidget)
+        self.majorBox.setGeometry(QtCore.QRect(190, 140, 281, 30))
+        font = QtGui.QFont()
+        font.setFamily("Calibri")
+        font.setPointSize(13)
+        self.majorBox.setFont(font)
+        self.majorBox.setEditable(False)
+        self.majorBox.setObjectName("majorBox")
+
+        # department
+        self.departmentBox = QtWidgets.QComboBox(self.centralwidget)
+        self.departmentBox.setGeometry(QtCore.QRect(190, 190, 281, 30))
+        font = QtGui.QFont()
+        font.setFamily("Calibri")
+        font.setPointSize(13)
+        self.departmentBox.setFont(font)
+        self.departmentBox.setEditable(False)
+        self.departmentBox.setObjectName("departmentBox")
+
+        # id
+        self.idBox = QtWidgets.QComboBox(self.centralwidget)
+        self.idBox.setGeometry(QtCore.QRect(190, 340, 281, 30))
+        font = QtGui.QFont()
+        font.setFamily("Calibri")
+        font.setPointSize(13)
+        self.idBox.setFont(font)
+        self.idBox.setEditable(False)
+        self.idBox.setObjectName("idBox")
+
+        # ranking
+        self.rankingBox = QtWidgets.QComboBox(self.centralwidget)
+        self.rankingBox.setGeometry(QtCore.QRect(190, 290, 281, 30))
+        font = QtGui.QFont()
+        font.setFamily("Calibri")
+        font.setPointSize(13)
+        self.rankingBox.setFont(font)
+        self.rankingBox.setEditable(False)
+        self.rankingBox.setObjectName("rankingBox")
+
+        # evaluations
+        self.evaluationsBox = QtWidgets.QComboBox(self.centralwidget)
+        self.evaluationsBox.setGeometry(QtCore.QRect(190, 240, 281, 30))
+        font = QtGui.QFont()
+        font.setFamily("Calibri")
+        font.setPointSize(13)
+        self.evaluationsBox.setFont(font)
+        self.evaluationsBox.setEditable(False)
+        self.evaluationsBox.setObjectName("evaluationsBox")
+
+        self.surnameBox.setCurrentIndex(0)
+        self.facultyBox.setCurrentIndex(0)
+        self.majorBox.setCurrentIndex(0)
+        self.departmentBox.setCurrentIndex(0)
+        self.idBox.setCurrentIndex(0)
+        self.rankingBox.setCurrentIndex(0)
+        self.evaluationsBox.setCurrentIndex(0)
 
         # menu bar
         self.setCentralWidget(self.centralwidget)
@@ -283,55 +263,55 @@ class ApplicationView(QtWidgets.QMainWindow):
         self.evaluationsCheckButton.setText(_translate("window", "Evaluations"))
         self.rankingCheckButton.setText(_translate("window", "Ranking"))
 
-        # combo(drop menu) boxes
-        # surnames
-        self.comboBox.setItemText(0, _translate("window", "Pevny"))
-        self.comboBox.setItemText(1, _translate("window", "Olefir"))
-        self.comboBox.setItemText(2, _translate("window", "Fesiuk"))
-        self.comboBox.setItemText(3, _translate("window", "Vishnyak"))
-        self.comboBox.setItemText(4, _translate("window", "Algin"))
-
-        # faculty
-        self.comboBox_2.setItemText(0, _translate("window", "CSC"))
-        self.comboBox_2.setItemText(1, _translate("window", "IT"))
-        self.comboBox_2.setItemText(2, _translate("window", "MAM"))
-        self.comboBox_2.setItemText(3, _translate("window", "Chemistry"))
-        self.comboBox_2.setItemText(4, _translate("window", "History"))
-
-        # major
-        self.comboBox_3.setItemText(0, _translate("window", "122"))
-        self.comboBox_3.setItemText(1, _translate("window", "121"))
-        self.comboBox_3.setItemText(2, _translate("window", "112"))
-        self.comboBox_3.setItemText(3, _translate("window", "027"))
-        self.comboBox_3.setItemText(4, _translate("window", "102"))
-
-        # department
-        self.comboBox_4.setItemText(0, _translate("window", "OR"))
-        self.comboBox_4.setItemText(1, _translate("window", "OOP"))
-        self.comboBox_4.setItemText(2, _translate("window", "Mathan"))
-        self.comboBox_4.setItemText(3, _translate("window", "UH"))
-        self.comboBox_4.setItemText(4, _translate("window", "H2O"))
-
-        # id
-        self.comboBox_5.setItemText(0, _translate("window", "100"))
-        self.comboBox_5.setItemText(1, _translate("window", "200"))
-        self.comboBox_5.setItemText(2, _translate("window", "300"))
-        self.comboBox_5.setItemText(3, _translate("window", "400"))
-        self.comboBox_5.setItemText(4, _translate("window", "500"))
-
-        # ranking
-        self.comboBox_6.setItemText(0, _translate("window", "1"))
-        self.comboBox_6.setItemText(1, _translate("window", "2"))
-        self.comboBox_6.setItemText(2, _translate("window", "3"))
-        self.comboBox_6.setItemText(3, _translate("window", "4"))
-        self.comboBox_6.setItemText(4, _translate("window", "5"))
-
-        # evaluations
-        self.comboBox_8.setItemText(0, _translate("window", "10"))
-        self.comboBox_8.setItemText(1, _translate("window", "9"))
-        self.comboBox_8.setItemText(2, _translate("window", "8"))
-        self.comboBox_8.setItemText(3, _translate("window", "7"))
-        self.comboBox_8.setItemText(4, _translate("window", "6"))
+        # # combo(drop menu) boxes
+        # # surnames
+        # self.surnameBox.addItem("Pevny")
+        # self.surnameBox.addItem("Olefir")
+        # self.surnameBox.addItem("Fesiuk")
+        # self.surnameBox.addItem("Vishnyak")
+        # self.surnameBox.addItem("Algin")
+#
+        # # faculty
+        # self.facultyBox.addItem("CSC")
+        # self.facultyBox.addItem("IT")
+        # self.facultyBox.addItem("MAM")
+        # self.facultyBox.addItem("Chemistry")
+        # self.facultyBox.addItem("History")
+#
+        # # major
+        # self.majorBox.addItem("122")
+        # self.majorBox.addItem("121")
+        # self.majorBox.addItem("112")
+        # self.majorBox.addItem("027")
+        # self.majorBox.addItem("102")
+#
+        # # department
+        # self.departmentBox.addItem("OR")
+        # self.departmentBox.addItem("OOP")
+        # self.departmentBox.addItem("Mathan")
+        # self.departmentBox.addItem("UH")
+        # self.departmentBox.addItem("H2O")
+#
+        # # id
+        # self.idBox.addItem("100")
+        # self.idBox.addItem("200")
+        # self.idBox.addItem("300")
+        # self.idBox.addItem("400")
+        # self.idBox.addItem("500")
+#
+        # # ranking
+        # self.rankingBox.addItem("1")
+        # self.rankingBox.addItem("2")
+        # self.rankingBox.addItem("3")
+        # self.rankingBox.addItem("4")
+        # self.rankingBox.addItem("5")
+#
+        # # evaluations
+        # self.evaluationsBox.addItem("10")
+        # self.evaluationsBox.addItem("9")
+        # self.evaluationsBox.addItem("8")
+        # self.evaluationsBox.addItem("7")
+        # self.evaluationsBox.addItem("6")
 
         # menu bar
         self.menuFile.setTitle(_translate("window", "File"))

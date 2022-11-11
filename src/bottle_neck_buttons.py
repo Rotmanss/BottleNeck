@@ -3,6 +3,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 import sax_handler as han
 import xml.sax
+import scroll_area as sa
 
 
 class BottleNeckButtons(view.ApplicationView):
@@ -13,6 +14,7 @@ class BottleNeckButtons(view.ApplicationView):
 
         self.checkBoxStatusDict = {"Surname": False, "Faculty": False, "Department": False, "Major": False, "ID": False,
                                    "Evaluations": False, "Ranking": False}
+        self.area = sa.ScrollArea(self.scrollArea)
 
     def on_event(self):
         self.convertButton.clicked.connect(self.convert_button)
@@ -87,34 +89,31 @@ class BottleNeckButtons(view.ApplicationView):
         parser.parse(r'D:\Programs\Pycharm\PyProjects\BottleNeck\StudentSuccess.xml')
 
         data = handler.handle()
+        clear_result = handler.get_result()
 
         for key in data:
-            if key == 'Surname':
-                for value in data[key]:
+            for i, value in enumerate(data[key]):
+                if key == 'Surname':
                     self.surnameBox.addItem(value)
-            elif key == "Faculty":
-                for value in data[key]:
+                elif key == "Faculty":
                     self.facultyBox.addItem(value)
-            elif key == "Department":
-                for value in data[key]:
+                elif key == "Department":
                     self.departmentBox.addItem(value)
-            elif key == "Major":
-                for value in data[key]:
+                elif key == "Major":
                     self.majorBox.addItem(value)
-            elif key == "ID":
-                for value in data[key]:
+                elif key == "ID":
                     self.idBox.addItem(value)
-            elif key == "Evaluations":
-                for value in data[key]:
+                elif key == "Evaluations":
                     self.evaluationsBox.addItem(value)
-            elif key == "Ranking":
-                for value in data[key]:
+                elif key == "Ranking":
                     self.rankingBox.addItem(value)
-
-        print(data)
+        self.parse_to_scroll_box(clear_result)
 
     def save_data(self):
         print('save data')
 
     def clear_data(self):
         print('clear data')
+
+    def parse_to_scroll_box(self, expr):
+        pass

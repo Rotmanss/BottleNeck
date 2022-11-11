@@ -1,31 +1,25 @@
 import bottle_neck_buttons as btn
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+import re
+
 
 class BottleNeck(btn.BottleNeckButtons):
     def __init__(self):
         super().__init__()
-        self.result_area()
 
-    def result_area(self):
-        result = QtWidgets.QListWidget()
+    def parse_to_scroll_box(self, expr):
+        # pattern = re.compile(r"--\s\w{2}\s(\d+)\s--\n\w{7}\:\s(\w+)\n\w{7}\:\s(\w+)\n\w{5}\:\s(\d+)\n\w{10}\:\s(\w+)\n\w{11}\:\s(\d+)\n\w{7}\:\s(\d+)")
+        # for it in re.finditer(pattern, expr):
+        #     pure_value = it.group(0, 1, 2, 3, 4, 5, 6, 7)
+        #     print(pure_value[0])
 
-        font = QtGui.QFont()
-        font.setFamily("Calibri")
-        font.setPointSize(13)
-        result.setFont(font)
+        pure_value_list = list()
+        pattern = re.compile(r"(--\s\w{2}\s\d+\s--\n\w{7}\:\s\w+\n\w{7}\:\s\w+\n\w{5}\:\s\d+\n\w{10}\:\s\w+\n\w{11}\:\s\d+\n\w{7}\:\s\d+)")
+        for pure_value in re.findall(pattern, expr):
+            pure_value_list.append(pure_value)
 
-        result.addItems(["Onsadfasdfasdfasdfasddfasdfasdfasd\nasdfdasfasdf\nasdfasdfasf\nasdfasdfas\nasdfasdfe", "Two", "Three"])
+        self.area.fill_area(pure_value_list)
 
-        result.currentItemChanged.connect(self.get_item)
-        result.currentTextChanged.connect(self.get_text)
-
-        self.scrollArea.setWidget(result)
-
-    def get_item(self, item):
-        print(item.text())
-        QtWidgets.QListWidgetItem = "Hello"
-        item.setText("Hello")
-
-    def get_text(self, text):
-        print(text)
+    def filtering(self):
+        pass

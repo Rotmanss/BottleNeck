@@ -7,14 +7,18 @@ class SaxHandler(i.HandlerInterface, xml.sax.handler.ContentHandler):
         super().__init__()
         self.comboBoxStatusDict = {"Surname": [], "Faculty": [], "Department": [], "Major": [], "ID": [],
                                    "Evaluations": [], "Ranking": []}
+        self.result = ""
 
     def handle(self) -> dict:
         return self.comboBoxStatusDict
 
+    def get_result(self):
+        return self.result
+
     def startElement(self, name, attrs):
         self.current = name
         if name == "Student":
-            print(f"-- Person {attrs['id']} --")
+            self.result += f"-- ID {attrs['id']} --\n"
             self.comboBoxStatusDict["ID"].append(attrs['id'])
 
     def characters(self, content):
@@ -33,21 +37,21 @@ class SaxHandler(i.HandlerInterface, xml.sax.handler.ContentHandler):
 
     def endElement(self, name):
         if self.current == "Surname":
-            print(f"Surname: {self.name}")
+            self.result += f"Surname: {self.name}\n"
             self.comboBoxStatusDict["Surname"].append(self.name)
         elif self.current == "Faculty":
-            print(f"Faculty: {self.faculty}")
+            self.result += f"Faculty: {self.faculty}\n"
             self.comboBoxStatusDict["Faculty"].append(self.faculty)
         elif self.current == "Major":
-            print(f"Major: {self.major}")
+            self.result += f"Major: {self.major}\n"
             self.comboBoxStatusDict["Major"].append(self.major)
         elif self.current == "Department":
-            print(f"Department: {self.department}")
+            self.result += f"Department: {self.department}\n"
             self.comboBoxStatusDict["Department"].append(self.department)
         elif self.current == "Evaluations":
-            print(f"Evaluations: {self.evaluations}")
+            self.result += f"Evaluations: {self.evaluations}\n"
             self.comboBoxStatusDict["Evaluations"].append(self.evaluations)
         elif self.current == "Ranking":
-            print(f"Ranking: {self.ranking}")
+            self.result += f"Ranking: {self.ranking}\n"
             self.comboBoxStatusDict["Ranking"].append(self.ranking)
         self.current = ""

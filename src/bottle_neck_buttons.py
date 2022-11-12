@@ -9,11 +9,14 @@ import scroll_area as sa
 class BottleNeckButtons(view.ApplicationView):
     def __init__(self):
         super().__init__()
-        self.init_ui()
         self.on_event()
 
         self.checkBoxStatusDict = {"Surname": False, "Faculty": False, "Department": False, "Major": False, "ID": False,
                                    "Evaluations": False, "Ranking": False}
+        self.boxesDict = {"Surname": self.surnameBox, "Faculty": self.facultyBox,
+                                    "Department": self.departmentBox, "Major": self.majorBox,
+                                    "ID": self.idBox, "Evaluations": self.evaluationsBox,
+                                    "Ranking": self.rankingBox}
         self.area = sa.ScrollArea(self.scrollArea)
 
     def on_event(self):
@@ -42,7 +45,7 @@ class BottleNeckButtons(view.ApplicationView):
         print('convert button')
 
     def search_button(self):
-        print('search button')
+        self.filtering()
 
     # radio buttons
     def sax_api_button(self):
@@ -55,27 +58,26 @@ class BottleNeckButtons(view.ApplicationView):
     def surname_check_button(self):
         print('surname check button')
         self.checkBoxStatusDict["Surname"] = self.surnameCheckButton.isChecked()
-        print(self.checkBoxStatusDict)
 
     def faculty_check_button(self):
         print('faculty check button')
-        self.checkBoxStatusDict["Faculty"] = self.surnameCheckButton.isChecked()
+        self.checkBoxStatusDict["Faculty"] = self.facultyCheckButton.isChecked()
 
     def department_check_button(self):
         print('department check button')
-        self.checkBoxStatusDict["Department"] = self.surnameCheckButton.isChecked()
+        self.checkBoxStatusDict["Department"] = self.departmentCheckButton.isChecked()
 
     def major_check_button(self):
         print('major check button')
-        self.checkBoxStatusDict["Major"] = self.surnameCheckButton.isChecked()
+        self.checkBoxStatusDict["Major"] = self.majorCheckButton.isChecked()
 
     def id_check_button(self):
         print('id check button')
-        self.checkBoxStatusDict["ID"] = self.surnameCheckButton.isChecked()
+        self.checkBoxStatusDict["ID"] = self.idCheckButton.isChecked()
 
     def evaluations_check_button(self):
         print('evaluations check button')
-        self.checkBoxStatusDict["Evaluations"] = self.surnameCheckButton.isChecked()
+        self.checkBoxStatusDict["Evaluations"] = self.evaluationsCheckButton.isChecked()
 
     def ranking_check_button(self):
         print('ranking check button')
@@ -116,4 +118,7 @@ class BottleNeckButtons(view.ApplicationView):
         print('clear data')
 
     def parse_to_scroll_box(self, expr):
+        pass
+
+    def filtering(self):
         pass

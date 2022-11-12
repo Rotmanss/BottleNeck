@@ -26,3 +26,6 @@ class ScrollArea(QtWidgets.QListWidget):
 
     def get_text(self, text):
         print(text)
+
+    def clear_area(self):
+        self.clear()

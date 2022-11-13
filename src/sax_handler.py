@@ -18,7 +18,7 @@ class SaxHandler(i.HandlerInterface, xml.sax.handler.ContentHandler):
     def startElement(self, name, attrs):
         self.current = name
         if name == "Student":
-            self.result += f"-- ID {attrs['id']} --\n"
+            self.result += f"-- ID: {attrs['id']} --\n"
             self.comboBoxStatusDict["ID"].append(attrs['id'])
 
     def characters(self, content):
@@ -55,3 +55,12 @@ class SaxHandler(i.HandlerInterface, xml.sax.handler.ContentHandler):
             self.result += f"Ranking: {self.ranking}\n"
             self.comboBoxStatusDict["Ranking"].append(self.ranking)
         self.current = ""
+
+
+def setup():
+    handler = SaxHandler()
+    parser = xml.sax.make_parser()
+    parser.setContentHandler(handler)
+    parser.parse(r'D:\Programs\Pycharm\PyProjects\BottleNeck\StudentSuccess.xml')
+
+    return handler

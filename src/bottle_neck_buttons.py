@@ -1,9 +1,9 @@
 import application_view as view
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-import sax_handler as han
-import xml.sax
 import scroll_area as sa
+
+import save_to_xml
 
 
 class BottleNeckButtons(view.ApplicationView):
@@ -17,7 +17,11 @@ class BottleNeckButtons(view.ApplicationView):
                                     "Department": self.departmentBox, "Major": self.majorBox,
                                     "ID": self.idBox, "Evaluations": self.evaluationsBox,
                                     "Ranking": self.rankingBox}
+        self.parsingType = {"Sax": True, "Dom": False}
+
         self.area = sa.ScrollArea(self.scrollArea)
+
+        self.save = save_to_xml.SavingToXML()
 
     def on_event(self):
         self.convertButton.clicked.connect(self.convert_button)
@@ -37,6 +41,7 @@ class BottleNeckButtons(view.ApplicationView):
         self.actionOpen.triggered.connect(self.open_data)
         self.actionSave.triggered.connect(self.save_data)
         self.actionClear.triggered.connect(self.clear_data)
+        self.actionAbout.triggered.connect(self.about_project)
 
     # buttons
     def convert_button(self):
@@ -49,76 +54,60 @@ class BottleNeckButtons(view.ApplicationView):
 
     # radio buttons
     def sax_api_button(self):
-        print('sax api button')
+        self.parsingType["Sax"] = self.SaxApiButton.isChecked()
+        self.parsingType["Dom"] = self.DomApiButton.isDown()
 
     def dom_api_button(self):
-        print('dom api button')
+        self.parsingType["Dom"] = self.DomApiButton.isChecked()
+        self.parsingType["Sax"] = self.SaxApiButton.isDown()
 
     # check(tick) boxes
     def surname_check_button(self):
-        print('surname check button')
         self.checkBoxStatusDict["Surname"] = self.surnameCheckButton.isChecked()
 
     def faculty_check_button(self):
-        print('faculty check button')
         self.checkBoxStatusDict["Faculty"] = self.facultyCheckButton.isChecked()
 
     def department_check_button(self):
-        print('department check button')
         self.checkBoxStatusDict["Department"] = self.departmentCheckButton.isChecked()
 
     def major_check_button(self):
-        print('major check button')
         self.checkBoxStatusDict["Major"] = self.majorCheckButton.isChecked()
 
     def id_check_button(self):
-        print('id check button')
         self.checkBoxStatusDict["ID"] = self.idCheckButton.isChecked()
 
     def evaluations_check_button(self):
-        print('evaluations check button')
         self.checkBoxStatusDict["Evaluations"] = self.evaluationsCheckButton.isChecked()
 
     def ranking_check_button(self):
-        print('ranking check button')
-        self.checkBoxStatusDict["Ranking"] = self.surnameCheckButton.isChecked()
+        self.checkBoxStatusDict["Ranking"] = self.rankingCheckButton.isChecked()
 
     # menu bar
     def open_data(self):
-        handler = han.SaxHandler()
-        parser = xml.sax.make_parser()
-        parser.setContentHandler(handler)
-        parser.parse(r'D:\Programs\Pycharm\PyProjects\BottleNeck\StudentSuccess.xml')
-
-        data = handler.handle()
-        clear_result = handler.get_result()
-
-        for key in data:
-            for i, value in enumerate(data[key]):
-                if key == 'Surname':
-                    self.surnameBox.addItem(value)
-                elif key == "Faculty":
-                    self.facultyBox.addItem(value)
-                elif key == "Department":
-                    self.departmentBox.addItem(value)
-                elif key == "Major":
-                    self.majorBox.addItem(value)
-                elif key == "ID":
-                    self.idBox.addItem(value)
-                elif key == "Evaluations":
-                    self.evaluationsBox.addItem(value)
-                elif key == "Ranking":
-                    self.rankingBox.addItem(value)
-        self.parse_to_scroll_box(clear_result)
+        if self.parsingType["Sax"]:
+            self.sax_handler()
+        else:
+            self.dom_handler()
 
     def save_data(self):
         print('save data')
+        self.save.save_data()
 
     def clear_data(self):
-        print('clear data')
+        self.area.clear_area()
+        for box in self.boxesDict.values():
+            box.clear()
 
-    def parse_to_scroll_box(self, expr):
+    def about_project(self):
+        self.message.about_project()
+
+    # overriding functions
+    def filtering(self):
         pass
 
-    def filtering(self):
+    def sax_handler(self):
+        pass
+
+    def dom_handler(self):
         pass

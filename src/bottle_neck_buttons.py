@@ -21,7 +21,7 @@ class BottleNeckButtons(view.ApplicationView):
 
         self.area = sa.ScrollArea(self.scrollArea)
 
-        self.save = save_to_xml.SavingToXML()
+        self.save = save_to_xml.SaveToXML()
 
     def on_event(self):
         self.convertButton.clicked.connect(self.convert_button)

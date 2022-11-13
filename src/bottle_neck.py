@@ -13,10 +13,11 @@ class BottleNeck(btn.BottleNeckButtons):
         self.pure_value_list = list()
 
     def parse_to_scroll_area(self, expr):
-        pattern = re.compile(r"(--\s\w{2}\:\s\d+\s--\n\w{7}\:\s\w+\n\w{7}\:\s\w+\n\w{5}\:\s\d+\n\w{10}\:\s\w+\n\w{11}\:\s[\d\,?\s]+\n\w{7}\:\s\d+)")
+        pattern = re.compile(r"--\s\w{2}\:\s\d+\s--\n\w{7}\:\s\w+\n\w{7}\:\s\w+\n\w{5}\:\s\d+\n\w{10}\:\s\w+\n\w{11}\:\s[\d\,?\s]+\n\w{7}\:\s\d+")
         for pure_value in re.findall(pattern, expr):
             self.pure_value_list.append(pure_value)
 
+        self.area.clear_area()
         self.area.fill_area(self.pure_value_list)
 
     def filtering(self):
@@ -38,6 +39,7 @@ class BottleNeck(btn.BottleNeckButtons):
 
         self.area.clear_area()
         self.area.fill_area(filtered_pure_value_list)
+        self.save.set_expression(filtered_pure_value_list)
 
     def sax_handler(self):
         self.unpacking_data(sax=True)

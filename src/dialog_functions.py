@@ -12,4 +12,3 @@ class DialogFunctions:
         self.msg.setText(s)
         self.msg.setStandardButtons(self.msg.Ok)
         self.msg.exec_()
-

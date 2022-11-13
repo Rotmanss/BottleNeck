@@ -10,7 +10,7 @@ class DomHandler(i.HandlerInterface):
         self.result = ""
 
     def handle(self):
-        domtree = xml.dom.minidom.parse(r'D:\Programs\Pycharm\PyProjects\BottleNeck\StudentSuccess.xml')
+        domtree = xml.dom.minidom.parse(r'D:\Programs\Pycharm\PyProjects\BottleNeck\new.xml')
 
         group = domtree.documentElement
         students = group.getElementsByTagName('Student')

@@ -19,7 +19,7 @@ class BottleNeckButtons(view.ApplicationView):
                                     "Department": self.departmentBox, "Major": self.majorBox,
                                     "ID": self.idBox, "Evaluations": self.evaluationsBox,
                                     "Ranking": self.rankingBox}
-        self.parsingType = {"Sax": True, "Dom": False}
+        self.parsingType = {"Sax": True, "Dom": False, "Etree": False}
 
         self.area = sa.ScrollArea(self.scrollArea)
 
@@ -32,6 +32,7 @@ class BottleNeckButtons(view.ApplicationView):
 
         self.SaxApiButton.clicked.connect(self.sax_api_button)
         self.DomApiButton.clicked.connect(self.dom_api_button)
+        self.EtreeApiButton.clicked.connect(self.etree_api_button)
 
         self.surnameCheckButton.clicked.connect(self.surname_check_button)
         self.facultyCheckButton.clicked.connect(self.faculty_check_button)
@@ -67,10 +68,17 @@ class BottleNeckButtons(view.ApplicationView):
     def sax_api_button(self):
         self.parsingType["Sax"] = self.SaxApiButton.isChecked()
         self.parsingType["Dom"] = self.DomApiButton.isDown()
+        self.parsingType["Etree"] = self.EtreeApiButton.isDown()
 
     def dom_api_button(self):
         self.parsingType["Dom"] = self.DomApiButton.isChecked()
         self.parsingType["Sax"] = self.SaxApiButton.isDown()
+        self.parsingType["Etree"] = self.EtreeApiButton.isDown()
+
+    def etree_api_button(self):
+        self.parsingType["Etree"] = self.EtreeApiButton.isChecked()
+        self.parsingType["Sax"] = self.SaxApiButton.isDown()
+        self.parsingType["Dom"] = self.DomApiButton.isDown()
 
     # check(tick) boxes
     def surname_check_button(self):
@@ -101,15 +109,19 @@ class BottleNeckButtons(view.ApplicationView):
                 path = self.message.get_open_path(self.centralwidget)[0]
                 if self.parsingType["Sax"]:
                     self.sax_handler(path)
-                else:
+                elif self.parsingType["Dom"]:
                     self.dom_handler(path)
+                else:
+                    self.etree_handler(path)
             else:
                 if self.message.save_when_reopen(self.centralwidget, self.save_data):
                     path = self.message.get_open_path(self.centralwidget)[0]
                     if self.parsingType["Sax"]:
                         self.sax_handler(path)
-                    else:
+                    elif self.parsingType["Dom"]:
                         self.dom_handler(path)
+                    else:
+                        self.etree_handler(path)
         except:
             pass
 
@@ -144,4 +156,7 @@ class BottleNeckButtons(view.ApplicationView):
         pass
 
     def dom_handler(self, path):
+        pass
+
+    def etree_handler(self, path):
         pass

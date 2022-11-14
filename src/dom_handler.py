@@ -4,7 +4,6 @@ import xml.dom.minidom
 
 class DomHandler(i.HandlerInterface):
     def __init__(self, path):
-        super().__init__()
         self.path = path
         self.comboBoxStatusDict = {"Surname": [], "Faculty": [], "Department": [], "Major": [], "ID": [],
                                    "Evaluations": [], "Ranking": []}

@@ -50,7 +50,7 @@ class ApplicationView(QtWidgets.QMainWindow):
 
         # radio buttons
         self.SaxApiButton = QtWidgets.QRadioButton(self.centralwidget)
-        self.SaxApiButton.setGeometry(QtCore.QRect(260, 480, 130, 30))
+        self.SaxApiButton.setGeometry(QtCore.QRect(260, 460, 130, 30))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(14)
@@ -60,13 +60,22 @@ class ApplicationView(QtWidgets.QMainWindow):
         self.SaxApiButton.setChecked(True)
 
         self.DomApiButton = QtWidgets.QRadioButton(self.centralwidget)
-        self.DomApiButton.setGeometry(QtCore.QRect(260, 530, 130, 30))
+        self.DomApiButton.setGeometry(QtCore.QRect(260, 510, 130, 30))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(14)
         self.DomApiButton.setFont(font)
         self.DomApiButton.setStyleSheet("")
         self.DomApiButton.setObjectName("DomApiButton")
+
+        self.EtreeApiButton = QtWidgets.QRadioButton(self.centralwidget)
+        self.EtreeApiButton.setGeometry(QtCore.QRect(260, 560, 130, 30))
+        font = QtGui.QFont()
+        font.setFamily("Calibri")
+        font.setPointSize(14)
+        self.EtreeApiButton.setFont(font)
+        self.EtreeApiButton.setStyleSheet("")
+        self.EtreeApiButton.setObjectName("EtreeApiButton")
 
         # check(tick) boxes
         # surname
@@ -243,7 +252,7 @@ class ApplicationView(QtWidgets.QMainWindow):
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.setWindowTitle(_translate("window", "BottleNeck"))
+        self.setWindowTitle(_translate("window", "BottleNeck 🍼"))
 
         # buttons
         self.convertButton.setText(_translate("window", "Convert"))
@@ -252,6 +261,7 @@ class ApplicationView(QtWidgets.QMainWindow):
         # radio buttons
         self.SaxApiButton.setText(_translate("window", "SAX API"))
         self.DomApiButton.setText(_translate("window", "DOM API"))
+        self.EtreeApiButton.setText(_translate("window", "Etree API"))
 
         # check(tick) boxes
         self.surnameCheckButton.setText(_translate("window", "Surname"))

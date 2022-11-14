@@ -5,6 +5,7 @@ import re
 
 import sax_handler
 import dom_handler
+import etree_handler
 
 
 class BottleNeck(btn.BottleNeckButtons):
@@ -54,12 +55,17 @@ class BottleNeck(btn.BottleNeckButtons):
     def dom_handler(self, path):
         self.unpacking_data(dom=True, path=path)
 
-    def unpacking_data(self, sax=False, dom=False, path=''):
+    def etree_handler(self, path):
+        self.unpacking_data(etree=True, path=path)
+
+    def unpacking_data(self, sax=False, dom=False, etree=False, path=''):
         handler = None
         if sax:
             handler = sax_handler.setup(path)
         elif dom:
             handler = dom_handler.DomHandler(path)
+        elif etree:
+            handler = etree_handler.EtreeHandler(path)
 
         data = handler.handle()
         pure_result = handler.get_result()

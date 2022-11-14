@@ -1,0 +1,111 @@
+<?xml version="1.0" ?>
+<Students>
+	<Student id = "001">
+		<Surname>Rotmans</Surname>
+		<Faculty>YT</Faculty>
+		<Major>122</Major>
+		<Department>OOP</Department>
+		<Evaluations>20</Evaluations>
+		<Ranking>1</Ranking>
+	</Student>
+
+	<Student id = "100">
+		<Surname>Pevny</Surname>
+		<Faculty>CSC</Faculty>
+		<Major>122</Major>
+		<Department>OR</Department>
+		<Evaluations>10, 11,232 9</Evaluations>
+		<Ranking>1</Ranking>
+	</Student>
+
+	<Student id = "200">
+		<Surname>Olefir</Surname>
+		<Faculty>CSC</Faculty>
+		<Major>122</Major>
+		<Department>OOP</Department>
+		<Evaluations>9</Evaluations>
+		<Ranking>2</Ranking>
+	</Student>
+
+	<Student id = "300">
+		<Surname>Fesiuk</Surname>
+		<Faculty>CSC</Faculty>
+		<Major>122</Major>
+		<Department>TP</Department>
+		<Evaluations>8</Evaluations>
+		<Ranking>3</Ranking>
+	</Student>
+
+	<Student id = "400">
+		<Surname>Vishnyak</Surname>
+		<Faculty>CSC</Faculty>
+		<Major>122</Major>
+		<Department>ML</Department>
+		<Evaluations>7</Evaluations>
+		<Ranking>4</Ranking>
+	</Student>
+
+	<Student id = "500">
+		<Surname>Algin</Surname>
+		<Faculty>CSC</Faculty>
+		<Major>122</Major>
+		<Department>DE</Department>
+		<Evaluations>6</Evaluations>
+		<Ranking>5</Ranking>
+	</Student>
+
+	<Student id = "600">
+		<Surname>Max</Surname>
+		<Faculty>Fish</Faculty>
+		<Major>123</Major>
+		<Department>Carp</Department>
+		<Evaluations>11</Evaluations>
+		<Ranking>6</Ranking>
+	</Student>
+
+	<Student id = "228">
+		<Surname>Jmyh</Surname>
+		<Faculty>YT</Faculty>
+		<Major>300</Major>
+		<Department>Clown</Department>
+		<Evaluations>11</Evaluations>
+		<Ranking>1</Ranking>
+	</Student>
+
+	<Student id = "003">
+		<Surname>Dua</Surname>
+		<Faculty>Music</Faculty>
+		<Major>001</Major>
+		<Department>FN</Department>
+		<Evaluations>10, 12</Evaluations>
+		<Ranking>1</Ranking>
+	</Student>
+
+	<Student id = "002">
+		<Surname>Gosling</Surname>
+		<Faculty>Actor</Faculty>
+		<Major>500</Major>
+		<Department>Drive</Department>
+		<Evaluations>15</Evaluations>
+		<Ranking>5</Ranking>
+	</Student>
+
+	<Student id = "444">
+		<Surname>Sergey</Surname>
+		<Faculty>Programming</Faculty>
+		<Major>320</Major>
+		<Department>YT</Department>
+		<Evaluations>10</Evaluations>
+		<Ranking>3</Ranking>
+	</Student>
+
+	<Student id = "555">
+		<Surname>Golova</Surname>
+		<Faculty>YT</Faculty>
+		<Major>5</Major>
+		<Department>Zavod</Department>
+		<Evaluations>5, 3</Evaluations>
+		<Ranking>200</Ranking>
+	</Student>
+
+</Students>

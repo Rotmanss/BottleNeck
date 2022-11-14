@@ -13,12 +13,17 @@ class BottleNeck(btn.BottleNeckButtons):
         self.pure_value_list = list()
 
     def parse_to_scroll_area(self, expr):
-        pattern = re.compile(r"--\s\w{2}\:\s\d+\s--\n\w{7}\:\s\w+\n\w{7}\:\s\w+\n\w{5}\:\s\d+\n\w{10}\:\s\w+\n\w{11}\:\s[\d\,?\s]+\n\w{7}\:\s\d+")
+        self.pure_value_list.clear()
+
+        pattern = re.compile(
+            r"--\s\w{2}\:\s\d+\s--\n\w{7}\:\s\w+\n\w{7}\:\s\w+\n\w{5}\:\s\d+\n\w{10}\:\s\w+\n\w{11}\:\s[\d\,?\s]+\n\w{7}\:\s\d+")
         for pure_value in re.findall(pattern, expr):
             self.pure_value_list.append(pure_value)
 
         self.area.clear_area()
         self.area.fill_area(self.pure_value_list)
+        self.saveXML.set_expression(self.pure_value_list)
+        self.saveHTML.set_expression(self.pure_value_list)
 
     def filtering(self):
         filtered_pure_value_list = [i for i in self.pure_value_list]
@@ -39,23 +44,21 @@ class BottleNeck(btn.BottleNeckButtons):
 
         self.area.clear_area()
         self.area.fill_area(filtered_pure_value_list)
-        self.save.set_expression(filtered_pure_value_list)
+        self.saveXML.set_expression(filtered_pure_value_list)
+        self.saveHTML.set_expression(filtered_pure_value_list)
 
-    def sax_handler(self):
-        self.unpacking_data(sax=True)
+    def sax_handler(self, path):
+        self.unpacking_data(sax=True, path=path)
 
-    def dom_handler(self):
-        self.unpacking_data(dom=True)
+    def dom_handler(self, path):
+        self.unpacking_data(dom=True, path=path)
 
-    def unpacking_data(self, sax=False, dom=False):
-        self.clear_data()
-        self.pure_value_list.clear()
-
+    def unpacking_data(self, sax=False, dom=False, path=''):
         handler = None
         if sax:
-            handler = sax_handler.setup()
+            handler = sax_handler.setup(path)
         elif dom:
-            handler = dom_handler.DomHandler()
+            handler = dom_handler.DomHandler(path)
 
         data = handler.handle()
         pure_result = handler.get_result()

@@ -57,10 +57,10 @@ class SaxHandler(i.HandlerInterface, xml.sax.handler.ContentHandler):
         self.current = ""
 
 
-def setup():
+def setup(path):
     handler = SaxHandler()
     parser = xml.sax.make_parser()
     parser.setContentHandler(handler)
-    parser.parse(r'D:\Programs\Pycharm\PyProjects\BottleNeck\StudentSuccess.xml')
+    parser.parse(path)
 
     return handler

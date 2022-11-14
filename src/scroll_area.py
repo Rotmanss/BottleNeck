@@ -1,9 +1,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class ScrollArea(QtWidgets.QListWidget):
+class ScrollArea(QtWidgets.QTextEdit):
     def __init__(self, scrollArea):
         super().__init__()
+        self.setGeometry(QtCore.QRect(510, 0, 551, 671))
         self.area = scrollArea
 
     def fill_area(self, item_list):
@@ -12,20 +13,11 @@ class ScrollArea(QtWidgets.QListWidget):
         font.setPointSize(13)
         self.setFont(font)
 
-        self.addItems(item_list)
+        for item in item_list:
+            self.append(item)
 
-        self.currentItemChanged.connect(self.get_item)
-        self.currentTextChanged.connect(self.get_text)
-
+        self.setReadOnly(True)
         self.area.setWidget(self)
-
-    def get_item(self, item):
-        # QtWidgets.QListWidgetItem = "Hello"
-        #item.setText("Hello")
-        print(item)
-
-    def get_text(self, text):
-        print(text)
 
     def clear_area(self):
         self.clear()

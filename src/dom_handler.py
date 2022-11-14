@@ -3,14 +3,15 @@ import xml.dom.minidom
 
 
 class DomHandler(i.HandlerInterface):
-    def __init__(self):
+    def __init__(self, path):
         super().__init__()
+        self.path = path
         self.comboBoxStatusDict = {"Surname": [], "Faculty": [], "Department": [], "Major": [], "ID": [],
                                    "Evaluations": [], "Ranking": []}
         self.result = ""
 
     def handle(self):
-        domtree = xml.dom.minidom.parse(r'D:\Programs\Pycharm\PyProjects\BottleNeck\new.xml')
+        domtree = xml.dom.minidom.parse(self.path)
 
         group = domtree.documentElement
         students = group.getElementsByTagName('Student')

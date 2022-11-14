@@ -25,13 +25,9 @@ class ApplicationView(QtWidgets.QMainWindow):
         self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
         self.scrollArea.setGeometry(QtCore.QRect(510, 0, 551, 671))
         self.scrollArea.setAutoFillBackground(False)
-        self.scrollArea.setStyleSheet("background-color:rgba(255, 255, 127, 125)")
+        self.scrollArea.setStyleSheet("background-color:rgba(255, 255, 127, 225)")
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
-        self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 549, 669))
-        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
         # buttons
         self.convertButton = QtWidgets.QPushButton(self.centralwidget)

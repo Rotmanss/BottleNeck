@@ -4,6 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import scroll_area as sa
 
 import save_to_xml
+import save_to_html
 
 
 class BottleNeckButtons(view.ApplicationView):
@@ -21,7 +22,8 @@ class BottleNeckButtons(view.ApplicationView):
 
         self.area = sa.ScrollArea(self.scrollArea)
 
-        self.save = save_to_xml.SaveToXML()
+        self.saveXML = save_to_xml.SaveToXML()
+        self.saveHTML = save_to_html.SaveToHTML()
 
     def on_event(self):
         self.convertButton.clicked.connect(self.convert_button)
@@ -45,9 +47,12 @@ class BottleNeckButtons(view.ApplicationView):
 
     # buttons
     def convert_button(self):
-        print(self.evaluationsBox.currentText())
-        print(self.evaluationsBox.currentIndex())
-        print('convert button')
+        try:
+            path = self.message.get_convert_path(self.centralwidget)[0]
+            self.saveHTML.set_path(path)
+            self.saveHTML.save_data()
+        except:
+            pass
 
     def search_button(self):
         self.filtering()
@@ -85,14 +90,22 @@ class BottleNeckButtons(view.ApplicationView):
 
     # menu bar
     def open_data(self):
-        if self.parsingType["Sax"]:
-            self.sax_handler()
-        else:
-            self.dom_handler()
+        try:
+            path = self.message.get_open_path(self.centralwidget)[0]
+            if self.parsingType["Sax"]:
+                self.sax_handler(path)
+            else:
+                self.dom_handler(path)
+        except:
+            pass
 
     def save_data(self):
-        print('save data')
-        self.save.save_data()
+        try:
+            path = self.message.get_save_path(self.centralwidget)[0]
+            self.saveXML.set_path(path)
+            self.saveXML.save_data()
+        except:
+            pass
 
     def clear_data(self):
         self.area.clear_area()
@@ -106,8 +119,8 @@ class BottleNeckButtons(view.ApplicationView):
     def filtering(self):
         pass
 
-    def sax_handler(self):
+    def sax_handler(self, path):
         pass
 
-    def dom_handler(self):
+    def dom_handler(self, path):
         pass

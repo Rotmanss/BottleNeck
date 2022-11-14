@@ -1,15 +1,15 @@
 import save_data_interface as i
-import xml.etree.ElementTree as et
 import re
 
 
-class SaveToXML(i.SavingDataInterface):
+class SaveToXML(i.SaveDataInterface):
     def __init__(self):
         super().__init__()
+        self.path = ''
         self.exprList = list()
 
     def save_data(self):
-        file = open(r'D:\Programs\Pycharm\PyProjects\BottleNeck\new.xml', 'w+')
+        file = open(self.path, 'w+')
         result = "<?xml version=\"1.0\" ?>\n" \
                  "<Students>\n\t"
 
@@ -31,6 +31,10 @@ class SaveToXML(i.SavingDataInterface):
         result += "</Students>"
 
         file.write(result)
+        file.close()
+
+    def set_path(self, path):
+        self.path = path
 
     def set_expression(self, value):
         self.exprList = value

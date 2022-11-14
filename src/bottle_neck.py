@@ -15,6 +15,7 @@ class BottleNeck(btn.BottleNeckButtons):
     def parse_to_scroll_area(self, expr):
         self.pure_value_list.clear()
 
+        # searching and extracting a student
         pattern = re.compile(
             r"--\s\w{2}\:\s\d+\s--\n\w{7}\:\s\w+\n\w{7}\:\s\w+\n\w{5}\:\s\d+\n\w{10}\:\s\w+\n\w{11}\:\s[\d\,?\s]+\n\w{7}\:\s\d+")
         for pure_value in re.findall(pattern, expr):
@@ -64,20 +65,11 @@ class BottleNeck(btn.BottleNeckButtons):
         pure_result = handler.get_result()
 
         for key in data:
-            for value in data[key]:
-                if key == 'Surname':
-                    self.surnameBox.addItem(value)
-                elif key == "Faculty":
-                    self.facultyBox.addItem(value)
-                elif key == "Department":
-                    self.departmentBox.addItem(value)
-                elif key == "Major":
-                    self.majorBox.addItem(value)
-                elif key == "ID":
-                    self.idBox.addItem(value)
-                elif key == "Evaluations":
-                    self.evaluationsBox.addItem(value)
-                elif key == "Ranking":
-                    self.rankingBox.addItem(value)
+            pure_data = []
+            [pure_data.append(x) for x in data[key] if x not in pure_data]  # removing all duplicates
+
+            self.boxesDict[key].clear()
+            for value in pure_data:
+                self.boxesDict[key].addItem(value)
 
         self.parse_to_scroll_area(pure_result)

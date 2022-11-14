@@ -36,6 +36,7 @@ class SaveToHTML(i.SaveDataInterface):
                         "<th>Ranking</th>\n\t" \
                     f"</tr>\n\t"
 
+        # extracting student's information
         pattern = re.compile(
             r"--\s\w{2}\:\s(\d+)\s--\n\w{7}\:\s(\w+)\n\w{7}\:\s(\w+)\n\w{5}\:\s(\d+)\n\w{10}\:\s(\w+)\n\w{11}\:\s([\d\,?\s]+)\n\w{7}\:\s(\d+)")
 

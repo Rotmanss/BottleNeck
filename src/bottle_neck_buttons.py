@@ -10,6 +10,7 @@ import save_to_html
 class BottleNeckButtons(view.ApplicationView):
     def __init__(self):
         super().__init__()
+        self.isSaved = True
         self.on_event()
 
         self.checkBoxStatusDict = {"Surname": False, "Faculty": False, "Department": False, "Major": False, "ID": False,
@@ -45,6 +46,10 @@ class BottleNeckButtons(view.ApplicationView):
         self.actionClear.triggered.connect(self.clear_data)
         self.actionAbout.triggered.connect(self.about_project)
 
+    def closeEvent(self, event):
+        if self.isSaved is not True:
+            self.message.save_before_close(event, self.centralwidget, self.save_data)
+
     # buttons
     def convert_button(self):
         try:
@@ -56,6 +61,7 @@ class BottleNeckButtons(view.ApplicationView):
 
     def search_button(self):
         self.filtering()
+        self.isSaved = False
 
     # radio buttons
     def sax_api_button(self):
@@ -91,11 +97,19 @@ class BottleNeckButtons(view.ApplicationView):
     # menu bar
     def open_data(self):
         try:
-            path = self.message.get_open_path(self.centralwidget)[0]
-            if self.parsingType["Sax"]:
-                self.sax_handler(path)
+            if self.isSaved:
+                path = self.message.get_open_path(self.centralwidget)[0]
+                if self.parsingType["Sax"]:
+                    self.sax_handler(path)
+                else:
+                    self.dom_handler(path)
             else:
-                self.dom_handler(path)
+                if self.message.save_when_reopen(self.centralwidget, self.save_data):
+                    path = self.message.get_open_path(self.centralwidget)[0]
+                    if self.parsingType["Sax"]:
+                        self.sax_handler(path)
+                    else:
+                        self.dom_handler(path)
         except:
             pass
 
@@ -104,13 +118,20 @@ class BottleNeckButtons(view.ApplicationView):
             path = self.message.get_save_path(self.centralwidget)[0]
             self.saveXML.set_path(path)
             self.saveXML.save_data()
+            self.isSaved = True
         except:
             pass
 
     def clear_data(self):
-        self.area.clear_area()
-        for box in self.boxesDict.values():
-            box.clear()
+        if self.isSaved:
+            self.area.clear_area()
+            for box in self.boxesDict.values():
+                box.clear()
+        else:
+            if self.message.save_when_clear(self.centralwidget, self.save_data):
+                self.area.clear_area()
+                for box in self.boxesDict.values():
+                    box.clear()
 
     def about_project(self):
         self.message.about_project()

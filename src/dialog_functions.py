@@ -8,7 +8,14 @@ class DialogFunctions:
         self.msg = QtWidgets.QMessageBox()
 
     def about_project(self):
-        s = 'Цей додаток оброблює, фільтрує та конвертує XML'
+        s = 'Цей додаток створений з любов\'ю для того, щоб було зручно шукати інформацію у XML файлі!\n' \
+            'Задля комфортного та естетичного перегляду інформації, ви можете конвертувати її ' \
+            'у HTML формат, та відкрити його у браузері, наприклад Google Chrome.\n' \
+            'Підтримуються 2 формати обробки XML даних : SAX API та DOM API.\n' \
+            'Для того щоб відсортувати інформацію, поставте галочку поряд з потрібним полем, та натисніть Search.\n' \
+            'Ви завжди можете очистити дані дані у додатку за допомогою кнопки Clear.\n' \
+            'Приємного користування!'
+
         self.msg.setIcon(self.msg.Information)
         self.msg.setWindowTitle("About project")
         self.msg.setText(s)
@@ -26,7 +33,35 @@ class DialogFunctions:
     def get_convert_path(self, parent):
         return QtWidgets.QFileDialog.getSaveFileName(parent, 'Select a file', os.getcwd()[:-4], 'HTML File (*.html)',
                                                      'HTML File (*.html)')
-# reopen
-# close
-# clear
-# dublication in box
+
+    def save_before_close(self, event, widget, saving_func):
+        reply = self.msg.question(widget, 'Window Close', 'Do you want to close the window without saving?',
+                                  self.msg.Yes | self.msg.Save | self.msg.Cancel)
+        if reply == self.msg.Yes:
+            event.accept()
+        elif reply == self.msg.Save:
+            saving_func()
+            event.ignore()
+        elif reply == self.msg.Cancel:
+            event.ignore()
+
+    def save_when_reopen(self, widget, saving_func):
+        reply = self.msg.question(widget, 'Window Close', 'Do you want to open new file without saving previous?', self.msg.Yes | self.msg.Save | self.msg.Cancel)
+        if reply == self.msg.Save:
+            saving_func()
+        elif reply == self.msg.Yes:
+            return True
+        elif reply == self.msg.Cancel:
+            pass
+
+    def save_when_clear(self, widget, saving_func):
+        reply = self.msg.question(widget, 'Window Close', 'Do you want to clear area without saving?', self.msg.Yes | self.msg.Save | self.msg.Cancel)
+        if reply == self.msg.Save:
+            saving_func()
+        elif reply == self.msg.Yes:
+            return True
+        elif reply == self.msg.Cancel:
+            pass
+
+# description + readme
+# third api

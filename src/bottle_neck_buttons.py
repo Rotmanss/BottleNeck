@@ -58,7 +58,7 @@ class BottleNeckButtons(view.ApplicationView):
             self.saveHTML.set_path(path)
             self.saveHTML.save_data()
         except:
-            pass
+            self.message.wrong_file_format()
 
     def search_button(self):
         self.filtering()
@@ -123,7 +123,7 @@ class BottleNeckButtons(view.ApplicationView):
                     else:
                         self.etree_handler(path)
         except:
-            pass
+            self.message.wrong_file_format()
 
     def save_data(self):
         try:
@@ -132,7 +132,7 @@ class BottleNeckButtons(view.ApplicationView):
             self.saveXML.save_data()
             self.isSaved = True
         except:
-            pass
+            self.message.wrong_file_format()
 
     def clear_data(self):
         if self.isSaved:

@@ -62,3 +62,10 @@ class DialogFunctions:
             return True
         elif reply == self.msg.Cancel:
             pass
+
+    def wrong_file_format(self):
+        self.msg.setIcon(self.msg.Critical)
+        self.msg.setWindowTitle("Error")
+        self.msg.setText("Incorrect file format!")
+        self.msg.setStandardButtons(self.msg.Ok)
+        self.msg.exec_()

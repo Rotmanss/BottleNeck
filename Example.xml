@@ -102,10 +102,19 @@
 	<Student id = "555">
 		<Surname>Golova</Surname>
 		<Faculty>YT</Faculty>
-		<Major>5</Major>
+		<Major>005</Major>
 		<Department>Zavod</Department>
 		<Evaluations>5, 3</Evaluations>
 		<Ranking>200</Ranking>
+	</Student>
+
+	<Student id = "666">
+		<Surname>Santehnic</Surname>
+		<Faculty>Dungeon</Faculty>
+		<Major>069</Major>
+		<Department>Pipe</Department>
+		<Evaluations>11</Evaluations>
+		<Ranking>2</Ranking>
 	</Student>
 
 </Students>

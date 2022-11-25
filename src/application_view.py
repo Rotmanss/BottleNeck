@@ -50,7 +50,7 @@ class ApplicationView(QtWidgets.QMainWindow):
 
         # radio buttons
         self.SaxApiButton = QtWidgets.QRadioButton(self.centralwidget)
-        self.SaxApiButton.setGeometry(QtCore.QRect(260, 460, 130, 30))
+        self.SaxApiButton.setGeometry(QtCore.QRect(260, 410, 130, 30))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(14)
@@ -60,7 +60,7 @@ class ApplicationView(QtWidgets.QMainWindow):
         self.SaxApiButton.setChecked(True)
 
         self.DomApiButton = QtWidgets.QRadioButton(self.centralwidget)
-        self.DomApiButton.setGeometry(QtCore.QRect(260, 510, 130, 30))
+        self.DomApiButton.setGeometry(QtCore.QRect(260, 460, 130, 30))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(14)
@@ -69,13 +69,22 @@ class ApplicationView(QtWidgets.QMainWindow):
         self.DomApiButton.setObjectName("DomApiButton")
 
         self.EtreeApiButton = QtWidgets.QRadioButton(self.centralwidget)
-        self.EtreeApiButton.setGeometry(QtCore.QRect(260, 560, 130, 30))
+        self.EtreeApiButton.setGeometry(QtCore.QRect(260, 510, 130, 30))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(14)
         self.EtreeApiButton.setFont(font)
         self.EtreeApiButton.setStyleSheet("")
         self.EtreeApiButton.setObjectName("EtreeApiButton")
+
+        self.JsonApiButton = QtWidgets.QRadioButton(self.centralwidget)
+        self.JsonApiButton.setGeometry(QtCore.QRect(260, 560, 130, 30))
+        font = QtGui.QFont()
+        font.setFamily("Calibri")
+        font.setPointSize(14)
+        self.JsonApiButton.setFont(font)
+        self.JsonApiButton.setStyleSheet("")
+        self.JsonApiButton.setObjectName("JsonApiButton")
 
         # check(tick) boxes
         # surname
@@ -262,6 +271,7 @@ class ApplicationView(QtWidgets.QMainWindow):
         self.SaxApiButton.setText(_translate("window", "SAX API"))
         self.DomApiButton.setText(_translate("window", "DOM API"))
         self.EtreeApiButton.setText(_translate("window", "Etree API"))
+        self.JsonApiButton.setText(_translate("window", "JSON API"))
 
         # check(tick) boxes
         self.surnameCheckButton.setText(_translate("window", "Surname"))

@@ -19,7 +19,7 @@ class BottleNeckButtons(view.ApplicationView):
                                     "Department": self.departmentBox, "Major": self.majorBox,
                                     "ID": self.idBox, "Evaluations": self.evaluationsBox,
                                     "Ranking": self.rankingBox}
-        self.parsingType = {"Sax": True, "Dom": False, "Etree": False}
+        self.parsingType = {"Sax": True, "Dom": False, "Etree": False, "Json": False}
 
         self.area = sa.ScrollArea(self.scrollArea)
 
@@ -33,6 +33,7 @@ class BottleNeckButtons(view.ApplicationView):
         self.SaxApiButton.clicked.connect(self.sax_api_button)
         self.DomApiButton.clicked.connect(self.dom_api_button)
         self.EtreeApiButton.clicked.connect(self.etree_api_button)
+        self.JsonApiButton.clicked.connect(self.json_api_button)
 
         self.surnameCheckButton.clicked.connect(self.surname_check_button)
         self.facultyCheckButton.clicked.connect(self.faculty_check_button)
@@ -55,7 +56,7 @@ class BottleNeckButtons(view.ApplicationView):
     def convert_button(self):
         try:
             path = self.message.get_convert_path(self.centralwidget)[0]
-            self.saveHTML.set_path(path)
+            self.saveHTML.path = path
             self.saveHTML.save_data()
         except:
             self.message.wrong_file_format()
@@ -69,16 +70,25 @@ class BottleNeckButtons(view.ApplicationView):
         self.parsingType["Sax"] = self.SaxApiButton.isChecked()
         self.parsingType["Dom"] = self.DomApiButton.isDown()
         self.parsingType["Etree"] = self.EtreeApiButton.isDown()
+        self.parsingType["Json"] = self.EtreeApiButton.isDown()
 
     def dom_api_button(self):
         self.parsingType["Dom"] = self.DomApiButton.isChecked()
         self.parsingType["Sax"] = self.SaxApiButton.isDown()
         self.parsingType["Etree"] = self.EtreeApiButton.isDown()
+        self.parsingType["Json"] = self.EtreeApiButton.isDown()
 
     def etree_api_button(self):
         self.parsingType["Etree"] = self.EtreeApiButton.isChecked()
         self.parsingType["Sax"] = self.SaxApiButton.isDown()
         self.parsingType["Dom"] = self.DomApiButton.isDown()
+        self.parsingType["Json"] = self.EtreeApiButton.isDown()
+
+    def json_api_button(self):
+        self.parsingType["Json"] = self.JsonApiButton.isChecked()
+        self.parsingType["Sax"] = self.SaxApiButton.isDown()
+        self.parsingType["Dom"] = self.DomApiButton.isDown()
+        self.parsingType["Etree"] = self.EtreeApiButton.isDown()
 
     # check(tick) boxes
     def surname_check_button(self):
@@ -111,8 +121,10 @@ class BottleNeckButtons(view.ApplicationView):
                     self.sax_handler(path)
                 elif self.parsingType["Dom"]:
                     self.dom_handler(path)
-                else:
+                elif self.parsingType["Etree"]:
                     self.etree_handler(path)
+                elif self.parsingType["Json"]:
+                    self.json_handler(path)
             else:
                 if self.message.save_when_reopen(self.centralwidget, self.save_data):
                     path = self.message.get_open_path(self.centralwidget)[0]
@@ -120,15 +132,17 @@ class BottleNeckButtons(view.ApplicationView):
                         self.sax_handler(path)
                     elif self.parsingType["Dom"]:
                         self.dom_handler(path)
-                    else:
+                    elif self.parsingType["Etree"]:
                         self.etree_handler(path)
+                    elif self.parsingType["Json"]:
+                        self.json_handler(path)
         except:
             self.message.wrong_file_format()
 
     def save_data(self):
         try:
             path = self.message.get_save_path(self.centralwidget)[0]
-            self.saveXML.set_path(path)
+            self.saveXML.path = path
             self.saveXML.save_data()
             self.isSaved = True
         except:
@@ -159,4 +173,7 @@ class BottleNeckButtons(view.ApplicationView):
         pass
 
     def etree_handler(self, path):
+        pass
+
+    def json_handler(self, path):
         pass

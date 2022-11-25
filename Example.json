@@ -1,0 +1,121 @@
+{
+  "Students": [
+    {
+      "ID" : "001",
+      "Surname": "Rotmans",
+      "Faculty": "YT",
+      "Major": 122,
+      "Department": "OOP",
+      "Evaluations": 20,
+      "Ranking": 1
+    },
+    {
+      "ID" : "100",
+      "Surname": "Pevny",
+      "Faculty": "CSC",
+      "Major": 122,
+      "Department": "OR",
+      "Evaluations": "10, 11,232 9",
+      "Ranking": 1
+    },
+    {
+      "ID" : "200",
+      "Surname": "Olefir",
+      "Faculty": "CSC",
+      "Major": 122,
+      "Department": "OOP",
+      "Evaluations": 9,
+      "Ranking": 2
+    },
+    {
+      "ID" : "300",
+      "Surname": "Fesiuk",
+      "Faculty": "CSC",
+      "Major": 122,
+      "Department": "TP",
+      "Evaluations": 8,
+      "Ranking": 3
+    },
+    {
+      "ID" : "400",
+      "Surname": "Vishnyak",
+      "Faculty": "CSC",
+      "Major": 122,
+      "Department": "ML",
+      "Evaluations": 7,
+      "Ranking": 4
+    },
+    {
+      "ID" : "500",
+      "Surname": "Algin",
+      "Faculty": "CSC",
+      "Major": 122,
+      "Department": "DE",
+      "Evaluations": 6,
+      "Ranking": 5
+    },
+    {
+      "ID" : "600",
+      "Surname": "Max",
+      "Faculty": "Fish",
+      "Major": 123,
+      "Department": "Carp",
+      "Evaluations": 11,
+      "Ranking": 6
+    },
+    {
+      "ID" : "228",
+      "Surname": "Jmyh",
+      "Faculty": "YT",
+      "Major": 300,
+      "Department": "Clown",
+      "Evaluations": 11,
+      "Ranking": 1
+    },
+    {
+      "ID" : "003",
+      "Surname": "Dua",
+      "Faculty": "Music",
+      "Major": 1,
+      "Department": "FN",
+      "Evaluations": "10, 12",
+      "Ranking": 1
+    },
+    {
+      "ID" : "002",
+      "Surname": "Gosling",
+      "Faculty": "Actor",
+      "Major": 500,
+      "Department": "Drive",
+      "Evaluations": 15,
+      "Ranking": 5
+    },
+    {
+      "ID" : "444",
+      "Surname": "Sergey",
+      "Faculty": "Programming",
+      "Major": 320,
+      "Department": "YT",
+      "Evaluations": 10,
+      "Ranking": 3
+    },
+    {
+      "ID" : "555",
+      "Surname": "Golova",
+      "Faculty": "YT",
+      "Major": 5,
+      "Department": "Zavod",
+      "Evaluations": "5, 3",
+      "Ranking": 200
+    },
+    {
+      "ID" : "666",
+      "Surname": "Santehnic",
+      "Faculty": "Dungeon",
+      "Major": 69,
+      "Department": "Pipe",
+      "Evaluations": 11,
+      "Ranking": 2
+    }
+  ]
+}

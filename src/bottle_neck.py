@@ -6,6 +6,7 @@ import re
 import sax_handler
 import dom_handler
 import etree_handler
+import json_handler
 
 
 class BottleNeck(btn.BottleNeckButtons):
@@ -24,8 +25,8 @@ class BottleNeck(btn.BottleNeckButtons):
 
         self.area.clear_area()
         self.area.fill_area(self.pure_value_list)
-        self.saveXML.set_expression(self.pure_value_list)
-        self.saveHTML.set_expression(self.pure_value_list)
+        self.saveXML.exprList = self.pure_value_list
+        self.saveHTML.exprList = self.pure_value_list
 
     def filtering(self):
         filtered_pure_value_list = [i for i in self.pure_value_list]
@@ -46,8 +47,8 @@ class BottleNeck(btn.BottleNeckButtons):
 
         self.area.clear_area()
         self.area.fill_area(filtered_pure_value_list)
-        self.saveXML.set_expression(filtered_pure_value_list)
-        self.saveHTML.set_expression(filtered_pure_value_list)
+        self.saveXML.exprList = filtered_pure_value_list
+        self.saveHTML.exprList = filtered_pure_value_list
 
     def sax_handler(self, path):
         self.unpacking_data(sax=True, path=path)
@@ -58,7 +59,10 @@ class BottleNeck(btn.BottleNeckButtons):
     def etree_handler(self, path):
         self.unpacking_data(etree=True, path=path)
 
-    def unpacking_data(self, sax=False, dom=False, etree=False, path=''):
+    def json_handler(self, path):
+        self.unpacking_data(json=True, path=path)
+
+    def unpacking_data(self, sax=False, dom=False, etree=False, json=False, path=''):
         handler = None
         if sax:
             handler = sax_handler.setup(path)
@@ -66,9 +70,11 @@ class BottleNeck(btn.BottleNeckButtons):
             handler = dom_handler.DomHandler(path)
         elif etree:
             handler = etree_handler.EtreeHandler(path)
+        elif json:
+            handler = json_handler.JsonHandler(path)
 
         data = handler.handle()
-        pure_result = handler.get_result()
+        pure_result = handler.result
 
         for key in data:
             pure_data = []
@@ -76,6 +82,6 @@ class BottleNeck(btn.BottleNeckButtons):
 
             self.boxesDict[key].clear()
             for value in pure_data:
-                self.boxesDict[key].addItem(value)
+                self.boxesDict[key].addItem(str(value))
 
         self.parse_to_scroll_area(pure_result)

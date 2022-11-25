@@ -12,9 +12,6 @@ class SaxHandler(i.HandlerInterface, xml.sax.handler.ContentHandler):
     def handle(self) -> dict:
         return self.comboBoxStatusDict
 
-    def get_result(self):
-        return self.result
-
     def startElement(self, name, attrs):
         self.current = name
         if name == "Student":
@@ -23,7 +20,7 @@ class SaxHandler(i.HandlerInterface, xml.sax.handler.ContentHandler):
 
     def characters(self, content):
         if self.current == "Surname":
-            self.name = content
+            self.surname = content
         elif self.current == "Faculty":
             self.faculty = content
         elif self.current == "Major":
@@ -37,8 +34,8 @@ class SaxHandler(i.HandlerInterface, xml.sax.handler.ContentHandler):
 
     def endElement(self, name):
         if self.current == "Surname":
-            self.result += f"Surname: {self.name}\n"
-            self.comboBoxStatusDict["Surname"].append(self.name)
+            self.result += f"Surname: {self.surname}\n"
+            self.comboBoxStatusDict["Surname"].append(self.surname)
         elif self.current == "Faculty":
             self.result += f"Faculty: {self.faculty}\n"
             self.comboBoxStatusDict["Faculty"].append(self.faculty)

@@ -43,6 +43,3 @@ class EtreeHandler(i.HandlerInterface):
                 pass
 
         return self.comboBoxStatusDict
-
-    def get_result(self):
-        return self.result

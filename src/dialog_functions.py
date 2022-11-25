@@ -24,11 +24,11 @@ class DialogFunctions:
 
     def get_open_path(self, parent):
         return QtWidgets.QFileDialog.getOpenFileName(parent, 'Select a file', os.getcwd()[:-4],
-                                                     'XML File (*.xml)', 'XML File (*.xml)')
+                                                     'XML File (*.xml);; JSON File (*.json)', 'JSON File (*.json)')
 
     def get_save_path(self, parent):
-        return QtWidgets.QFileDialog.getSaveFileName(parent, 'Select a file', os.getcwd()[:-4], 'XML File (*.xml)',
-                                                     'XML File (*.xml)')
+        return QtWidgets.QFileDialog.getSaveFileName(parent, 'Select a file', os.getcwd()[:-4],
+                                                     'XML File (*.xml);; JSON File (*.json)', 'JSON File (*.json)')
 
     def get_convert_path(self, parent):
         return QtWidgets.QFileDialog.getSaveFileName(parent, 'Select a file', os.getcwd()[:-4], 'HTML File (*.html)',

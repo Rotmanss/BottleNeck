@@ -9,7 +9,6 @@ class SaveToXML(i.SaveDataInterface):
         self.exprList = list()
 
     def save_data(self):
-        file = open(self.path, 'w+')
         result = "<?xml version=\"1.0\" ?>\n" \
                  "<Students>\n\t"
 
@@ -31,11 +30,5 @@ class SaveToXML(i.SaveDataInterface):
                       f"</Student>\n\t"
         result += "</Students>"
 
-        file.write(result)
-        file.close()
-
-    def set_path(self, path):
-        self.path = path
-
-    def set_expression(self, value):
-        self.exprList = value
+        with open(self.path, 'w') as file:
+            file.write(result)

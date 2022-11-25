@@ -9,7 +9,6 @@ class SaveToHTML(i.SaveDataInterface):
         self.exprList = list()
 
     def save_data(self):
-        file = open(self.path, 'w+')
         result = "<!DOCTYPE html>\n" \
                  "<html>\n" \
                  "<head>\n\t" \
@@ -58,11 +57,5 @@ class SaveToHTML(i.SaveDataInterface):
                   "</body>\n" \
                   "</html>"
 
-        file.write(result)
-        file.close()
-
-    def set_path(self, path):
-        self.path = path
-
-    def set_expression(self, value):
-        self.exprList = value
+        with open(self.path, 'w') as file:
+            file.write(result)

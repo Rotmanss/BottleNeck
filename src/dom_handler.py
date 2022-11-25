@@ -40,6 +40,3 @@ class DomHandler(i.HandlerInterface):
             self.comboBoxStatusDict["Ranking"].append(ranking)
 
         return self.comboBoxStatusDict
-
-    def get_result(self):
-        return self.result

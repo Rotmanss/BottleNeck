@@ -69,3 +69,10 @@ class DialogFunctions:
         self.msg.setText("Incorrect file format!")
         self.msg.setStandardButtons(self.msg.Ok)
         self.msg.exec_()
+
+    def wrong_data_input(self):
+        self.msg.setIcon(self.msg.Critical)
+        self.msg.setWindowTitle("Error")
+        self.msg.setText("You input wrong data!")
+        self.msg.setStandardButtons(self.msg.Ok)
+        self.msg.exec_()

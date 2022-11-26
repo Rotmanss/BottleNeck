@@ -7,17 +7,15 @@ class ScrollArea(QtWidgets.QTextEdit):
         self.setGeometry(QtCore.QRect(510, 0, 551, 671))
         self.area = scrollArea
 
-    def fill_area(self, item_list):
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(13)
         self.setFont(font)
 
+        self.setReadOnly(True)
+
+    def append_area(self, item_list):
         for item in item_list:
             self.append(item)
 
-        self.setReadOnly(True)
         self.area.setWidget(self)
-
-    def clear_area(self):
-        self.clear()

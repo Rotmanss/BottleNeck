@@ -8,11 +8,15 @@ import dom_handler
 import etree_handler
 import json_handler
 
+import expander
+
 
 class BottleNeck(btn.BottleNeckButtons):
     def __init__(self):
         super().__init__()
         self.pure_value_list = list()
+
+        self.expander = expander.Expander(self.append_combo_boxes, self.parse_to_scroll_area)
 
     def parse_to_scroll_area(self, expr):
         self.pure_value_list.clear()
@@ -23,8 +27,8 @@ class BottleNeck(btn.BottleNeckButtons):
         for pure_value in re.findall(pattern, expr):
             self.pure_value_list.append(pure_value)
 
-        self.area.clear_area()
-        self.area.fill_area(self.pure_value_list)
+        self.area.clear()
+        self.area.append_area(self.pure_value_list)
         self.saveXML.exprList = self.pure_value_list
         self.saveHTML.exprList = self.pure_value_list
 
@@ -45,8 +49,8 @@ class BottleNeck(btn.BottleNeckButtons):
                     except:
                         pass
 
-        self.area.clear_area()
-        self.area.fill_area(filtered_pure_value_list)
+        self.area.clear()
+        self.area.append_area(filtered_pure_value_list)
         self.saveXML.exprList = filtered_pure_value_list
         self.saveHTML.exprList = filtered_pure_value_list
 
@@ -76,12 +80,9 @@ class BottleNeck(btn.BottleNeckButtons):
         data = handler.handle()
         pure_result = handler.result
 
-        for key in data:
-            pure_data = []
-            [pure_data.append(x) for x in data[key] if x not in pure_data]  # removing all duplicates
-
-            self.boxesDict[key].clear()
-            for value in pure_data:
-                self.boxesDict[key].addItem(str(value))
-
+        self.append_combo_boxes(data)
         self.parse_to_scroll_area(pure_result)
+
+    def add_student_button(self):
+        self.expander.open_expander()
+        self.isSaved = False

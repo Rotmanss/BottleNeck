@@ -47,6 +47,24 @@ class ApplicationView(QtWidgets.QMainWindow):
         self.searchButton.setFont(font)
         self.searchButton.setStyleSheet("background-color:rgb(255, 170, 255)")
         self.searchButton.setObjectName("searchButton")
+        
+        self.addStudentButton = QtWidgets.QPushButton(self.centralwidget)
+        self.addStudentButton.setGeometry(QtCore.QRect(20, 410, 150, 35))
+        font = QtGui.QFont()
+        font.setFamily("Calibri")
+        font.setPointSize(15)
+        self.addStudentButton.setFont(font)
+        self.addStudentButton.setStyleSheet("background-color: #ccff99")
+        self.addStudentButton.setObjectName("addStudentButton")
+        
+        self.delStudentButton = QtWidgets.QPushButton(self.centralwidget)
+        self.delStudentButton.setGeometry(QtCore.QRect(20, 460, 150, 35))
+        font = QtGui.QFont()
+        font.setFamily("Calibri")
+        font.setPointSize(15)
+        self.delStudentButton.setFont(font)
+        self.delStudentButton.setStyleSheet("background-color: #FFCCCB")
+        self.delStudentButton.setObjectName("delStudentButton")
 
         # radio buttons
         self.SaxApiButton = QtWidgets.QRadioButton(self.centralwidget)
@@ -266,6 +284,8 @@ class ApplicationView(QtWidgets.QMainWindow):
         # buttons
         self.convertButton.setText(_translate("window", "Convert"))
         self.searchButton.setText(_translate("window", "Search"))
+        self.addStudentButton.setText(_translate("window", "Add student"))
+        self.delStudentButton.setText(_translate("window", "Remove student"))
 
         # radio buttons
         self.SaxApiButton.setText(_translate("window", "SAX API"))

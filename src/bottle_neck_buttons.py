@@ -29,6 +29,8 @@ class BottleNeckButtons(view.ApplicationView):
     def on_event(self):
         self.convertButton.clicked.connect(self.convert_button)
         self.searchButton.clicked.connect(self.search_button)
+        self.addStudentButton.clicked.connect(self.add_student_button)
+        self.delStudentButton.clicked.connect(self.del_student_button)
 
         self.SaxApiButton.clicked.connect(self.sax_api_button)
         self.DomApiButton.clicked.connect(self.dom_api_button)
@@ -64,6 +66,12 @@ class BottleNeckButtons(view.ApplicationView):
     def search_button(self):
         self.filtering()
         self.isSaved = False
+
+    def add_student_button(self):
+        pass
+
+    def del_student_button(self):
+        pass
 
     # radio buttons
     def sax_api_button(self):
@@ -150,17 +158,23 @@ class BottleNeckButtons(view.ApplicationView):
 
     def clear_data(self):
         if self.isSaved:
-            self.area.clear_area()
+            self.area.clear()
             for box in self.boxesDict.values():
                 box.clear()
         else:
             if self.message.save_when_clear(self.centralwidget, self.save_data):
-                self.area.clear_area()
+                self.area.clear()
                 for box in self.boxesDict.values():
                     box.clear()
 
     def about_project(self):
         self.message.about_project()
+
+    def append_combo_boxes(self, data):
+        for key, value in data.items():
+            for element in value:
+                if self.boxesDict[key].findText(str(element)) == -1:  # if not found, 0 if found
+                    self.boxesDict[key].addItem(str(element))
 
     # overriding functions
     def filtering(self):

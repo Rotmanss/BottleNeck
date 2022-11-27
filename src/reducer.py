@@ -2,23 +2,23 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import dialog_functions
 
 
-class Expander(QtWidgets.QWidget):
-    def __init__(self, add_func):
+class Reducer(QtWidgets.QWidget):
+    def __init__(self, remove_func):
         super().__init__()
-        self.add_func = add_func
+        self.remove_func = remove_func
 
         # window settings
-        self.setWindowTitle("Expander")
+        self.setWindowTitle("Reducer")
         self.resize(540, 340)
         self.setMinimumSize(QtCore.QSize(540, 340))
         self.setMaximumSize(QtCore.QSize(540, 340))
         self.setAutoFillBackground(False)
-        self.setStyleSheet("background-color: #ccff99")
+        self.setStyleSheet("background-color: #FFCCCB")
 
         self.comboBoxStatusDict = {"Surname": [], "Faculty": [], "Department": [], "Major": [], "ID": [],
                                    "Evaluations": [], "Ranking": []}
 
-    def open_expander(self):
+    def open_reducer(self):
         # font setting
         font = QtGui.QFont()
         font.setFamily("Calibri")
@@ -80,17 +80,17 @@ class Expander(QtWidgets.QWidget):
         form_layout.addRow(ranking_label, ranking_line)
 
         # commit button
-        self.CommitButton = QtWidgets.QPushButton(self)
-        self.CommitButton.setText("Commit")
-        self.CommitButton.setGeometry(QtCore.QRect(20, 280, 500, 40))
-        self.CommitButton.setFont(font)
-        self.CommitButton.setStyleSheet("background-color:rgb(255, 250, 80)")
+        self.RemoveButton = QtWidgets.QPushButton(self)
+        self.RemoveButton.setText("Remove")
+        self.RemoveButton.setGeometry(QtCore.QRect(20, 280, 500, 40))
+        self.RemoveButton.setFont(font)
+        self.RemoveButton.setStyleSheet("background-color:rgb(255, 170, 255)")
 
-        self.CommitButton.clicked.connect(lambda: commit_button())
+        self.RemoveButton.clicked.connect(lambda: remove_button())
         self.show()
         form_layout.deleteLater()
 
-        def commit_button():
+        def remove_button():
             if id_line.text() != '' and surname_line.text() != '' and faculty_line.text() != '' \
             and major_line.text() != '' and department_line.text() != '' and evaluations_line.text() != '' \
             and ranking_line.text() != '':
@@ -111,7 +111,7 @@ class Expander(QtWidgets.QWidget):
                 self.comboBoxStatusDict["Evaluations"].append(evaluations_line.text())
                 self.comboBoxStatusDict["Ranking"].append(ranking_line.text())
 
-                self.add_func(self.comboBoxStatusDict, result)
+                self.remove_func(self.comboBoxStatusDict, result)
             else:
                 msg = dialog_functions.DialogFunctions()
                 msg.fill_all_fields()

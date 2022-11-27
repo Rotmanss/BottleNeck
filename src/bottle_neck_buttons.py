@@ -5,6 +5,7 @@ import scroll_area as sa
 
 import save_to_xml
 import save_to_html
+import save_to_json
 
 
 class BottleNeckButtons(view.ApplicationView):
@@ -25,6 +26,7 @@ class BottleNeckButtons(view.ApplicationView):
 
         self.saveXML = save_to_xml.SaveToXML()
         self.saveHTML = save_to_html.SaveToHTML()
+        self.saveJSON = save_to_json.SaveToJSON()
 
     def on_event(self):
         self.convertButton.clicked.connect(self.convert_button)
@@ -149,9 +151,14 @@ class BottleNeckButtons(view.ApplicationView):
 
     def save_data(self):
         try:
-            path = self.message.get_save_path(self.centralwidget)[0]
-            self.saveXML.path = path
-            self.saveXML.save_data()
+            path, extension = self.message.get_save_path(self.centralwidget)
+            if extension == 'XML File (*.xml)':
+                self.saveXML.path = path
+                self.saveXML.save_data()
+            elif extension == 'JSON File (*.json)':
+                self.saveJSON.path = path
+                self.saveJSON.save_data()
+
             self.isSaved = True
         except:
             self.message.wrong_file_format()
@@ -166,6 +173,7 @@ class BottleNeckButtons(view.ApplicationView):
                 self.area.clear()
                 for box in self.boxesDict.values():
                     box.clear()
+                self.isSaved = True
 
     def about_project(self):
         self.message.about_project()

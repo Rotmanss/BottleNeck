@@ -9,6 +9,7 @@ import etree_handler
 import json_handler
 
 import expander
+import reducer
 
 
 class BottleNeck(btn.BottleNeckButtons):
@@ -16,7 +17,8 @@ class BottleNeck(btn.BottleNeckButtons):
         super().__init__()
         self.pure_value_list = list()
 
-        self.expander = expander.Expander(self.append_combo_boxes, self.parse_to_scroll_area)
+        self.expander = expander.Expander(self.on_add)
+        self.reducer = reducer.Reducer(self.on_remove)
 
     def parse_to_scroll_area(self, expr):
         self.pure_value_list.clear()
@@ -30,6 +32,7 @@ class BottleNeck(btn.BottleNeckButtons):
         self.area.clear()
         self.area.append_area(self.pure_value_list)
         self.saveXML.exprList = self.pure_value_list
+        self.saveJSON.exprList = self.pure_value_list
         self.saveHTML.exprList = self.pure_value_list
 
     def filtering(self):
@@ -52,6 +55,7 @@ class BottleNeck(btn.BottleNeckButtons):
         self.area.clear()
         self.area.append_area(filtered_pure_value_list)
         self.saveXML.exprList = filtered_pure_value_list
+        self.saveJSON.exprList = filtered_pure_value_list
         self.saveHTML.exprList = filtered_pure_value_list
 
     def sax_handler(self, path):
@@ -77,12 +81,40 @@ class BottleNeck(btn.BottleNeckButtons):
         elif json:
             handler = json_handler.JsonHandler(path)
 
-        data = handler.handle()
+        box_data = handler.handle()
         pure_result = handler.result
 
-        self.append_combo_boxes(data)
+        self.append_combo_boxes(box_data)
         self.parse_to_scroll_area(pure_result)
 
     def add_student_button(self):
         self.expander.open_expander()
+
+    def del_student_button(self):
+        self.reducer.open_reducer()
+
+    # function for updating students list after adding new student
+    def on_add(self, box_data, student):
+        self.append_combo_boxes(box_data)
+
+        self.area.append_area([student])
+        self.pure_value_list.append(student)
+
+        self.saveXML.exprList.append(student)
+        self.saveJSON.exprList.append(student)
+        self.saveHTML.exprList.append(student)
         self.isSaved = False
+
+    # function for updating students list after removing student
+    def on_remove(self, box_data, student):
+        try:
+            self.pure_value_list.remove(student)
+            self.area.clear()
+            self.area.append_area(self.pure_value_list)
+
+            self.saveXML.exprList = self.pure_value_list
+            self.saveJSON.exprList = self.pure_value_list
+            self.saveHTML.exprList = self.pure_value_list
+            self.isSaved = False
+        except:
+            self.message.remove_error()

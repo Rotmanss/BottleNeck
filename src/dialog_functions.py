@@ -76,3 +76,17 @@ class DialogFunctions:
         self.msg.setText("You input wrong data!")
         self.msg.setStandardButtons(self.msg.Ok)
         self.msg.exec_()
+
+    def remove_error(self):
+        self.msg.setIcon(self.msg.Critical)
+        self.msg.setWindowTitle("Error")
+        self.msg.setText("List does not have this student!")
+        self.msg.setStandardButtons(self.msg.Ok)
+        self.msg.exec_()
+
+    def fill_all_fields(self):
+        self.msg.setIcon(self.msg.Warning)
+        self.msg.setWindowTitle("Warning")
+        self.msg.setText("You have to fill all fields in this form!")
+        self.msg.setStandardButtons(self.msg.Ok)
+        self.msg.exec_()

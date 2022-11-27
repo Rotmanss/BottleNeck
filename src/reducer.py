@@ -1,8 +1,9 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+import changer_interface as i
 import dialog_functions
 
 
-class Reducer(QtWidgets.QWidget):
+class Reducer(QtWidgets.QWidget, i.ChangerInterface):
     def __init__(self, remove_func):
         super().__init__()
         self.remove_func = remove_func
@@ -18,7 +19,7 @@ class Reducer(QtWidgets.QWidget):
         self.comboBoxStatusDict = {"Surname": [], "Faculty": [], "Department": [], "Major": [], "ID": [],
                                    "Evaluations": [], "Ranking": []}
 
-    def open_reducer(self):
+    def open_changer(self):
         # font setting
         font = QtGui.QFont()
         font.setFamily("Calibri")

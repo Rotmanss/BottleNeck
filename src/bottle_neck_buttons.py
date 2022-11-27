@@ -52,10 +52,6 @@ class BottleNeckButtons(view.ApplicationView):
         self.actionClear.triggered.connect(self.clear_data)
         self.actionAbout.triggered.connect(self.about_project)
 
-    def closeEvent(self, event):
-        if self.isSaved is not True:
-            self.message.save_before_close(event, self.centralwidget, self.save_data)
-
     # buttons
     def convert_button(self):
         try:

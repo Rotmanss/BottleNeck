@@ -11,6 +11,9 @@ import json_handler
 import expander
 import reducer
 
+# input control
+# delete from combo boxes
+
 
 class BottleNeck(btn.BottleNeckButtons):
     def __init__(self):
@@ -19,6 +22,13 @@ class BottleNeck(btn.BottleNeckButtons):
 
         self.expander = expander.Expander(self.on_add)
         self.reducer = reducer.Reducer(self.on_remove)
+
+    def closeEvent(self, event):
+        if self.isSaved is not True:
+            self.message.save_before_close(event, self.centralwidget, self.save_data)
+
+        self.expander.close()
+        self.reducer.close()
 
     def parse_to_scroll_area(self, expr):
         self.pure_value_list.clear()
@@ -88,10 +98,16 @@ class BottleNeck(btn.BottleNeckButtons):
         self.parse_to_scroll_area(pure_result)
 
     def add_student_button(self):
-        self.expander.open_expander()
+        self.change_data(expand=True)
 
     def del_student_button(self):
-        self.reducer.open_reducer()
+        self.change_data(reduce=True)
+
+    def change_data(self, expand=False, reduce=False):
+        if expand:
+            self.expander.open_changer()
+        elif reduce:
+            self.reducer.open_changer()
 
     # function for updating students list after adding new student
     def on_add(self, box_data, student):

@@ -11,9 +11,6 @@ import json_handler
 import expander
 import reducer
 
-# input control
-# delete from combo boxes
-
 
 class BottleNeck(btn.BottleNeckButtons):
     def __init__(self):
@@ -35,7 +32,7 @@ class BottleNeck(btn.BottleNeckButtons):
 
         # searching and extracting a student
         pattern = re.compile(
-            r"--\s\w{2}\:\s\d+\s--\n\w{7}\:\s\w+\n\w{7}\:\s\w+\n\w{5}\:\s\d+\n\w{10}\:\s\w+\n\w{11}\:\s[\d\,?\s]+\n\w{7}\:\s\d+")
+            r"--\s\w{2}\:\s\d+\s--\n\w{7}\:\s\w+\n\w{7}\:\s\w+\n\w{5}\:\s\d+\n\w{10}\:\s\w+\n\w{11}\:\s[\d\,\s]+\n\w{7}\:\s\d+")
         for pure_value in re.findall(pattern, expr):
             self.pure_value_list.append(pure_value)
 

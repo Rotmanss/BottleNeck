@@ -7,6 +7,7 @@ class Reducer(QtWidgets.QWidget, i.ChangerInterface):
     def __init__(self, remove_func):
         super().__init__()
         self.remove_func = remove_func
+        self.message = dialog_functions.DialogFunctions()
 
         # window settings
         self.setWindowTitle("Reducer")
@@ -31,42 +32,49 @@ class Reducer(QtWidgets.QWidget, i.ChangerInterface):
         # fields setting
         # ID
         id_line = QtWidgets.QLineEdit(self)
+        id_line.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("\d*")))
         id_line.setFont(font)
         id_label = QtWidgets.QLabel("ID:")
         id_label.setFont(font)
 
         # Surname
         surname_line = QtWidgets.QLineEdit(self)
+        surname_line.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[A-Za-z]*")))
         surname_line.setFont(font)
         surname_label = QtWidgets.QLabel("Surname:")
         surname_label.setFont(font)
 
         # Faculty
         faculty_line = QtWidgets.QLineEdit(self)
+        faculty_line.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[A-Za-z]*")))
         faculty_line.setFont(font)
         faculty_label = QtWidgets.QLabel("Faculty:")
         faculty_label.setFont(font)
 
         # Major
         major_line = QtWidgets.QLineEdit(self)
+        major_line.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("\d*")))
         major_line.setFont(font)
         major_label = QtWidgets.QLabel("Major:")
         major_label.setFont(font)
 
         # Department
         department_line = QtWidgets.QLineEdit(self)
+        department_line.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[A-Za-z]*")))
         department_line.setFont(font)
         department_label = QtWidgets.QLabel("Department:")
         department_label.setFont(font)
 
         # Evaluations
         evaluations_line = QtWidgets.QLineEdit(self)
+        evaluations_line.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[\d\,\s]*")))
         evaluations_line.setFont(font)
         evaluations_label = QtWidgets.QLabel("Evaluations:")
         evaluations_label.setFont(font)
 
         # Ranking
         ranking_line = QtWidgets.QLineEdit(self)
+        ranking_line.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("\d*")))
         ranking_line.setFont(font)
         ranking_label = QtWidgets.QLabel("Ranking:")
         ranking_label.setFont(font)
@@ -112,7 +120,7 @@ class Reducer(QtWidgets.QWidget, i.ChangerInterface):
                 self.comboBoxStatusDict["Evaluations"].append(evaluations_line.text())
                 self.comboBoxStatusDict["Ranking"].append(ranking_line.text())
 
-                self.remove_func(self.comboBoxStatusDict, result)
+                if self.message.confirm_deletion(self):
+                    self.remove_func(self.comboBoxStatusDict, result)
             else:
-                msg = dialog_functions.DialogFunctions()
-                msg.fill_all_fields()
+                self.message.fill_all_fields()

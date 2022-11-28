@@ -1,5 +1,6 @@
 import handler_interface as i
 import json
+import dialog_functions
 
 
 class JsonHandler(i.HandlerInterface):
@@ -17,8 +18,6 @@ class JsonHandler(i.HandlerInterface):
         for student in students_json:
             for key, value in student.items():
                 try:
-                    self.comboBoxStatusDict[key].append(value)
-
                     if key == "ID":
                         self.result += f"-- ID: {value} --\n"
                     elif key == "Surname":
@@ -33,7 +32,10 @@ class JsonHandler(i.HandlerInterface):
                         self.result += f"Evaluations: {value}\n"
                     elif key == "Ranking":
                         self.result += f"Ranking: {value}\n"
+
+                    self.comboBoxStatusDict[key].append(value)
                 except:
-                    print('Wrong object name in json file!')
+                    msg = dialog_functions.DialogFunctions()
+                    msg.wrong_data_input()
 
         return self.comboBoxStatusDict

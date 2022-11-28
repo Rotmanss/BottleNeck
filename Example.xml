@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <Students>
-	<Student id = "001">
+	<Student id = "1">
 		<Surname>Rotmans</Surname>
 		<Faculty>YT</Faculty>
 		<Major>122</Major>
@@ -15,6 +15,15 @@
 		<Major>122</Major>
 		<Department>OR</Department>
 		<Evaluations>10, 11,232 9</Evaluations>
+		<Ranking>1</Ranking>
+	</Student>
+
+	<Student id = "999">
+		<Surname>Anikusin</Surname>
+		<Faculty>CSC</Faculty>
+		<Major>122</Major>
+		<Department>Matan</Department>
+		<Evaluations>100</Evaluations>
 		<Ranking>1</Ranking>
 	</Student>
 
@@ -72,7 +81,7 @@
 		<Ranking>1</Ranking>
 	</Student>
 
-	<Student id = "003">
+	<Student id = "3">
 		<Surname>Dua</Surname>
 		<Faculty>Music</Faculty>
 		<Major>001</Major>
@@ -81,7 +90,7 @@
 		<Ranking>1</Ranking>
 	</Student>
 
-	<Student id = "002">
+	<Student id = "2">
 		<Surname>Gosling</Surname>
 		<Faculty>Actor</Faculty>
 		<Major>500</Major>

@@ -1,7 +1,7 @@
 {
   "Students": [
     {
-      "ID": "001",
+      "ID": 1,
       "Surname": "Rotmans",
       "Faculty": "YT",
       "Major": 122,
@@ -10,7 +10,7 @@
       "Ranking": 1
     },
     {
-      "ID": "100",
+      "ID": 100,
       "Surname": "Pevny",
       "Faculty": "CSC",
       "Major": 122,
@@ -19,7 +19,16 @@
       "Ranking": 1
     },
     {
-      "ID": "200",
+      "ID": 999,
+      "Surname": "Anikusin",
+      "Faculty": "CSC",
+      "Major": 122,
+      "Department": "Matan",
+      "Evaluations": 100,
+      "Ranking": 1
+    },
+    {
+      "ID": 200,
       "Surname": "Olefir",
       "Faculty": "CSC",
       "Major": 122,
@@ -28,7 +37,7 @@
       "Ranking": 2
     },
     {
-      "ID": "300",
+      "ID": 300,
       "Surname": "Fesiuk",
       "Faculty": "CSC",
       "Major": 122,
@@ -37,7 +46,7 @@
       "Ranking": 3
     },
     {
-      "ID": "400",
+      "ID": 400,
       "Surname": "Vishnyak",
       "Faculty": "CSC",
       "Major": 122,
@@ -46,7 +55,7 @@
       "Ranking": 4
     },
     {
-      "ID": "500",
+      "ID": 500,
       "Surname": "Algin",
       "Faculty": "CSC",
       "Major": 122,
@@ -55,7 +64,7 @@
       "Ranking": 5
     },
     {
-      "ID": "600",
+      "ID": 600,
       "Surname": "Max",
       "Faculty": "Fish",
       "Major": 123,
@@ -64,7 +73,7 @@
       "Ranking": 6
     },
     {
-      "ID": "228",
+      "ID": 228,
       "Surname": "Jmyh",
       "Faculty": "YT",
       "Major": 300,
@@ -73,7 +82,7 @@
       "Ranking": 1
     },
     {
-      "ID": "003",
+      "ID": 3,
       "Surname": "Dua",
       "Faculty": "Music",
       "Major": 1,
@@ -82,7 +91,7 @@
       "Ranking": 1
     },
     {
-      "ID": "002",
+      "ID": 2,
       "Surname": "Gosling",
       "Faculty": "Actor",
       "Major": 500,
@@ -91,7 +100,7 @@
       "Ranking": 5
     },
     {
-      "ID": "444",
+      "ID": 444,
       "Surname": "Sergey",
       "Faculty": "Programming",
       "Major": 320,
@@ -100,7 +109,7 @@
       "Ranking": 3
     },
     {
-      "ID": "555",
+      "ID": 555,
       "Surname": "Golova",
       "Faculty": "YT",
       "Major": 5,
@@ -109,7 +118,7 @@
       "Ranking": 200
     },
     {
-      "ID": "666",
+      "ID": 666,
       "Surname": "Santehnic",
       "Faculty": "Dungeon",
       "Major": 69,

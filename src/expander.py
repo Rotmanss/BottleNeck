@@ -31,42 +31,49 @@ class Expander(QtWidgets.QWidget, i.ChangerInterface):
         # fields setting
         # ID
         id_line = QtWidgets.QLineEdit(self)
+        id_line.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("\d*")))
         id_line.setFont(font)
         id_label = QtWidgets.QLabel("ID:")
         id_label.setFont(font)
 
         # Surname
         surname_line = QtWidgets.QLineEdit(self)
+        surname_line.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[A-Za-z]*")))
         surname_line.setFont(font)
         surname_label = QtWidgets.QLabel("Surname:")
         surname_label.setFont(font)
 
         # Faculty
         faculty_line = QtWidgets.QLineEdit(self)
+        faculty_line.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[A-Za-z]*")))
         faculty_line.setFont(font)
         faculty_label = QtWidgets.QLabel("Faculty:")
         faculty_label.setFont(font)
 
         # Major
         major_line = QtWidgets.QLineEdit(self)
+        major_line.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("\d*")))
         major_line.setFont(font)
         major_label = QtWidgets.QLabel("Major:")
         major_label.setFont(font)
 
         # Department
         department_line = QtWidgets.QLineEdit(self)
+        department_line.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[A-Za-z]*")))
         department_line.setFont(font)
         department_label = QtWidgets.QLabel("Department:")
         department_label.setFont(font)
 
         # Evaluations
         evaluations_line = QtWidgets.QLineEdit(self)
+        evaluations_line.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[\d\,\s]*")))
         evaluations_line.setFont(font)
         evaluations_label = QtWidgets.QLabel("Evaluations:")
         evaluations_label.setFont(font)
 
         # Ranking
         ranking_line = QtWidgets.QLineEdit(self)
+        ranking_line.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("\d*")))
         ranking_line.setFont(font)
         ranking_label = QtWidgets.QLabel("Ranking:")
         ranking_label.setFont(font)

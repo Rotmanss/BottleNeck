@@ -3,11 +3,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 import re
 
+import handler_interface
 import sax_handler
 import dom_handler
 import etree_handler
 import json_handler
 
+import changer_interface
 import expander
 import reducer
 
@@ -17,15 +19,11 @@ class BottleNeck(btn.BottleNeckButtons):
         super().__init__()
         self.pure_value_list = list()
 
-        self.expander = expander.Expander(self.on_add)
-        self.reducer = reducer.Reducer(self.on_remove)
-
     def closeEvent(self, event):
         if self.isSaved is not True:
             self.message.save_before_close(event, self.centralwidget, self.save_data)
 
-        self.expander.close()
-        self.reducer.close()
+        self.changer.close()
 
     def parse_to_scroll_area(self, expr):
         self.pure_value_list.clear()
@@ -66,28 +64,18 @@ class BottleNeck(btn.BottleNeckButtons):
         self.saveHTML.exprList = filtered_pure_value_list
 
     def sax_handler(self, path):
-        self.unpacking_data(sax=True, path=path)
+        self.unpacking_data(sax_handler.setup(path))
 
     def dom_handler(self, path):
-        self.unpacking_data(dom=True, path=path)
+        self.unpacking_data(dom_handler.DomHandler(path))
 
     def etree_handler(self, path):
-        self.unpacking_data(etree=True, path=path)
+        self.unpacking_data(etree_handler.EtreeHandler(path))
 
     def json_handler(self, path):
-        self.unpacking_data(json=True, path=path)
+        self.unpacking_data(json_handler.JsonHandler(path))
 
-    def unpacking_data(self, sax=False, dom=False, etree=False, json=False, path=''):
-        handler = None
-        if sax:
-            handler = sax_handler.setup(path)
-        elif dom:
-            handler = dom_handler.DomHandler(path)
-        elif etree:
-            handler = etree_handler.EtreeHandler(path)
-        elif json:
-            handler = json_handler.JsonHandler(path)
-
+    def unpacking_data(self, handler: handler_interface.HandlerInterface):
         box_data = handler.handle()
         pure_result = handler.result
 
@@ -95,16 +83,14 @@ class BottleNeck(btn.BottleNeckButtons):
         self.parse_to_scroll_area(pure_result)
 
     def add_student_button(self):
-        self.change_data(expand=True)
+        self.change_data(expander.Expander(self.on_add))
 
     def del_student_button(self):
-        self.change_data(reduce=True)
+        self.change_data(reducer.Reducer(self.on_remove))
 
-    def change_data(self, expand=False, reduce=False):
-        if expand:
-            self.expander.open_changer()
-        elif reduce:
-            self.reducer.open_changer()
+    def change_data(self, changer: changer_interface.ChangerInterface):
+        self.changer = changer
+        self.changer.open_changer()
 
     # function for updating students list after adding new student
     def on_add(self, box_data, student):

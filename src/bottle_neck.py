@@ -18,12 +18,14 @@ class BottleNeck(btn.BottleNeckButtons):
     def __init__(self):
         super().__init__()
         self.pure_value_list = list()
+        self.changer = None
 
     def closeEvent(self, event):
         if self.isSaved is not True:
             self.message.save_before_close(event, self.centralwidget, self.save_data)
 
-        self.changer.close()
+        if self.changer:
+            self.changer.close()
 
     def parse_to_scroll_area(self, expr):
         self.pure_value_list.clear()

@@ -47,7 +47,7 @@ class DialogFunctions:
             'Приємного користування!'
 
         self.msg.setIcon(self.msg.Information)
-        self.msg.setWindowTitle("About project")
+        self.msg.setWindowTitle("About project(@Pevny)")
         self.msg.setText(s)
         self.msg.setStandardButtons(self.msg.Ok)
         self.msg.exec_()

@@ -1,3 +1,2 @@
 setuptools
 PyQt5
-PySide2
